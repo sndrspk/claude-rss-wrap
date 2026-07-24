@@ -36,7 +36,7 @@ tags:
   - name: "Wrap: Tech and Science"
     # Shown as the entry title in Feedbin.
     label: "Tech and Science"
-	 slug: "tech-and-science"
+    slug: "tech-and-science"
     max_items: 6
     # true  = script marks everything it considered as read in Feedbin
     # false = your unread counts are left alone
@@ -65,7 +65,7 @@ tags:
 
   - name: "Wrap: Culture"
     label: "Culture"
-	 slug: "culture"
+    slug: "culture"
     max_items: 6
     mark_read: false
     language: |
@@ -80,22 +80,23 @@ tags:
       is worse than the article. For each selected item write one line on what
       it is and one line on why he would want to open it. Never give away the
       argument of a review or the outcome of a recap. Think of it as a nudge or a
-		teaser, not a substitute.
+      teaser, not a substitute.
     interests: |
-	   - Culture: anything that's a main pop culture trend or vibe shift or bigger 		         movement.
+      - Culture: anything that's a main pop culture trend or vibe shift or
+        bigger movement.
       - Music. His taste runs to sparse, piano-centred, emotionally direct
         recordings: Japanese piano trio jazz (Ryo Fukui, Masaru Imada, Tsuyoshi
         Yamamoto), contemporary and European jazz (Intakt and similar labels),
         intimate vocal jazz, and songwriters in the Carole King / Laura Nyro
         line. Also (indie) pop, (indie) rock, loud music, hardcore, punk, metal and   
-		  experimental music when the writing is good and the music is more interesting
-		  than simple mainstream stuff. Likes bigger pop culture and music trends as well.
+        experimental music when the writing is good and the music is more interesting
+	than simple mainstream stuff. Likes bigger pop culture and music trends as well.
         Interested in reissues, vinyl and CD culture, obituaries of musicians
         he would know, and criticism worth reading for its own sake.
       - RuPaul's Drag Race: casting, seasons, queens, anything substantial.
-		- B&B Vol Liefde, Winter Vol Liefde and B&B Zkt. Lief
+      - B&B Vol Liefde, Winter Vol Liefde and B&B Zkt. Lief
       - Film: arthouse, festival news, major directors, and well-made mainstream
         cinema. Not interested in superhero films or generic action.
       - Skip: celebrity gossip, chart and box-office numbers as such, awards-season
-		  horse race, quizzes and games,
-        US reality television other than Drag Race and the B&B shows.
+	horse race, quizzes and games, US reality television other than Drag Race
+        and the B&B shows.
