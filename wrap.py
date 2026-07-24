@@ -249,10 +249,22 @@ Reply with exactly this shape:
     return system, user
 
 
-def call_claude(model: str, system: str, user: str, api_key: str) -> list[dict]:
+def extract_json(text: str) -> str:
+    """Pull the JSON object out, tolerating fences or stray preamble."""
+    text = text.strip()
+    text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+    if not text.startswith("{"):
+        start, end = text.find("{"), text.rfind("}")
+        if start != -1 and end > start:
+            text = text[start:end + 1]
+    return text
+
+
+def call_claude(model: str, system: str, user: str, api_key: str,
+                max_tokens: int = 8000) -> list[dict]:
     payload = {
         "model": model,
-        "max_tokens": 2000,
+        "max_tokens": max_tokens,
         "system": system,
         "messages": [{"role": "user", "content": user}],
     }
@@ -261,12 +273,13 @@ def call_claude(model: str, system: str, user: str, api_key: str) -> list[dict]:
         "anthropic-version": ANTHROPIC_VERSION,
         "content-type": "application/json",
     }
+    log(f"  sending {len(user):,} characters to {model}")
 
     last_error = None
     for attempt in range(3):
         try:
             response = requests.post(ANTHROPIC_URL, json=payload,
-                                     headers=headers, timeout=120)
+                                     headers=headers, timeout=180)
             if response.status_code in (429, 500, 502, 503, 529):
                 wait = 5 * (attempt + 1)
                 log(f"  retrying after {response.status_code} in {wait}s")
@@ -274,13 +287,29 @@ def call_claude(model: str, system: str, user: str, api_key: str) -> list[dict]:
                 continue
             response.raise_for_status()
             data = response.json()
+            stop = data.get("stop_reason")
+            usage = data.get("usage", {})
+            log(f"  stop_reason={stop} in={usage.get('input_tokens')} "
+                f"out={usage.get('output_tokens')}")
+
             text = "".join(
                 block.get("text", "")
                 for block in data.get("content", [])
                 if block.get("type") == "text"
-            ).strip()
-            text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-            return json.loads(text).get("selected", [])
+            )
+            if not text.strip():
+                types = [b.get("type") for b in data.get("content", [])]
+                raise RuntimeError(
+                    f"no text in response (stop_reason={stop}, blocks={types}). "
+                    "If stop_reason is max_tokens, raise max_tokens in config.yml."
+                )
+            try:
+                return json.loads(extract_json(text)).get("selected", [])
+            except json.JSONDecodeError as exc:
+                # Show what actually came back rather than failing blind.
+                log(f"  ! unparseable response (stop_reason={stop}): "
+                    f"{text[:300]!r}")
+                raise RuntimeError(f"could not parse response as JSON: {exc}") from exc
         except Exception as exc:  # noqa: BLE001
             last_error = exc
             time.sleep(3)
@@ -438,7 +467,8 @@ def process_tag(session, config, tag_cfg, tag_feeds, titles, api_key, state):
                 entry["_text"] = extracted
 
     system, user = build_prompt(tag_cfg, entries, titles, config["snippet_chars"])
-    selected = call_claude(config["model"], system, user, api_key)
+    selected = call_claude(config["model"], system, user, api_key,
+                           config.get("max_tokens", 8000))
     log(f"  Claude selected {len(selected)} of {len(entries)}")
 
     picks = []
@@ -499,15 +529,19 @@ def main() -> None:
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     (DOCS_DIR / "index.html").write_text(build_home(config), encoding="utf-8")
 
+    failures = []
     for tag_cfg in config["tags"]:
         result = results.get(tag_cfg["name"])
-        if not result:
-            continue
 
         tag_state = state["tags"].setdefault(tag_cfg["name"], {"published": []})
         tag_state.setdefault("published", [])
 
-        if result.get("published_entry"):
+        if result is None:
+            # Errored or no feeds carry the tag. Still write the files, so the
+            # feed URL keeps resolving instead of 404ing, but flag it loudly.
+            failures.append(tag_cfg["name"])
+            log(f"{tag_cfg['label']}: FAILED, feed left at its previous contents")
+        elif result.get("published_entry"):
             tag_state["published"].insert(0, result["published_entry"])
             tag_state["published"] = tag_state["published"][:config["keep_entries"]]
             log(f"{tag_cfg['label']}: published")
@@ -521,12 +555,18 @@ def main() -> None:
         (DOCS_DIR / f"{tag_cfg['slug']}.html").write_text(
             build_index(config, tag_cfg, tag_state["published"]), encoding="utf-8")
 
+        if result is None:
+            continue
+
         # Only now, after a successful write, advance state and mark read.
         tag_state["since"] = result["next_since"]
         if tag_cfg.get("mark_read") and result["considered"]:
             mark_read(session, result["considered"])
 
     save_state(state)
+
+    if failures:
+        die("these tags did not run: " + ", ".join(failures))
     log("Done.")
 
 

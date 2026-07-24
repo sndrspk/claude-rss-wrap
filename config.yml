@@ -6,7 +6,7 @@
 
 # Where the published feed will live. Used for the Atom feed's own <id>
 # and self link. Set this after you enable GitHub Pages.
-site_url: "https://sndrspk.github.io/claude-rss-wrap"
+site_url: "https://YOURNAME.github.io/feedbin-wrap"
 
 feed_title: "Wrap"
 feed_author: "Feedbin Wrap"
@@ -32,10 +32,16 @@ max_entries_per_tag: 120
 # Characters of article text sent per entry.
 snippet_chars: 1200
 
+# Output budget for each triage call. Too low and the model runs out of room
+# mid-JSON and returns nothing usable. Raise it if the log shows
+# stop_reason=max_tokens.
+max_tokens: 8000
+
 tags:
   - name: "Wrap: Tech and Science"
     # Shown as the entry title in Feedbin.
     label: "Tech and Science"
+    # Filenames: <slug>.xml is the feed, <slug>.html the archive page.
     slug: "tech-and-science"
     max_items: 6
     # true  = script marks everything it considered as read in Feedbin
@@ -79,24 +85,19 @@ tags:
       Point, do not summarise. The pleasure here is in the reading, so a summary
       is worse than the article. For each selected item write one line on what
       it is and one line on why he would want to open it. Never give away the
-      argument of a review or the outcome of a recap. Think of it as a nudge or a
-      teaser, not a substitute.
+      argument of a review or the outcome of a recap. Think of it as a nudge,
+      not a substitute.
     interests: |
-      - Culture: anything that's a main pop culture trend or vibe shift or
-        bigger movement.
       - Music. His taste runs to sparse, piano-centred, emotionally direct
         recordings: Japanese piano trio jazz (Ryo Fukui, Masaru Imada, Tsuyoshi
         Yamamoto), contemporary and European jazz (Intakt and similar labels),
         intimate vocal jazz, and songwriters in the Carole King / Laura Nyro
-        line. Also (indie) pop, (indie) rock, loud music, hardcore, punk, metal and
-        experimental music when the writing is good and the music is more interesting
-        than simple mainstream stuff. Likes bigger pop culture and music trends as well.
+        line. Also pop, rock and experimental music when the writing is good.
         Interested in reissues, vinyl and CD culture, obituaries of musicians
         he would know, and criticism worth reading for its own sake.
       - RuPaul's Drag Race: casting, seasons, queens, anything substantial.
-      - B&B Vol Liefde, Winter Vol Liefde and B&B Zkt. Lief
       - Film: arthouse, festival news, major directors, and well-made mainstream
         cinema. Not interested in superhero films or generic action.
-      - Skip: celebrity gossip, chart and box-office numbers as such, awards-season
-        horse race, quizzes and games, US reality television other than Drag Race
-        and the B&B shows.
+      - Skip: celebrity gossip, chart and box-office numbers as such, streaming
+        industry business news, awards-season horse race, quizzes and games,
+        US reality television other than Drag Race.
