@@ -1,0 +1,49 @@
+name: Wrap
+
+on:
+  schedule:
+    # GitHub cron is always UTC. Belgium is UTC+2 in summer, UTC+1 in winter,
+    # so 05:30 UTC lands at 07:30 local now and 06:30 local in January.
+    # Every weekday:            "30 5 * * 1-5"
+    # Every other day:          "30 5 */2 * *"
+    - cron: "30 5 * * 1-5"
+  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+
+permissions:
+  contents: write           # needed to commit the regenerated feed
+
+concurrency:
+  group: wrap
+  cancel-in-progress: false
+
+jobs:
+  wrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build the wrap
+        env:
+          FEEDBIN_EMAIL: ${{ secrets.FEEDBIN_EMAIL }}
+          FEEDBIN_PASSWORD: ${{ secrets.FEEDBIN_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python wrap.py
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/ state.json
+          if git diff --staged --quiet; then
+            echo "Nothing to commit."
+          else
+            git commit -m "Wrap: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
