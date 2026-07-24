@@ -1,0 +1,95 @@
+# Feedbin Wrap — configuration
+#
+# Everything you are likely to want to change lives in this file.
+# The one exception is the run schedule, which is the cron line in
+# .github/workflows/wrap.yml (GitHub only accepts cron there).
+
+# Where the published feed will live. Used for the Atom feed's own <id>
+# and self link. Set this after you enable GitHub Pages.
+site_url: "https://sndrspk.github.io/claude-rss-wrap"
+
+feed_title: "Wrap"
+feed_author: "Feedbin Wrap"
+
+# Anthropic model used for the triage step.
+# Current IDs are listed at https://docs.claude.com/en/docs/about-claude/models
+model: "claude-sonnet-5"
+
+# How many past entries to keep in the Atom file. Feedbin polls on its own
+# schedule, so keeping a rolling window means nothing is missed if it polls
+# less often than the job runs.
+keep_entries: 30
+
+# Fetch Feedbin's extracted full text instead of relying on the feed's own
+# summary. Better input for the model, slower runs, more tokens.
+# Leave off for the first few runs, then turn on if summaries feel thin.
+extract_full_content: false
+
+# Hard ceiling on how many entries get sent to the model per tag per run.
+# Protects you from a runaway feed after a long gap.
+max_entries_per_tag: 120
+
+# Characters of article text sent per entry.
+snippet_chars: 1200
+
+tags:
+  - name: "Wrap: Tech and Science"
+    # Shown as the entry title in Feedbin.
+    label: "Tech and Science"
+    max_items: 6
+    # true  = script marks everything it considered as read in Feedbin
+    # false = your unread counts are left alone
+    mark_read: false
+    language: |
+      British English throughout, whatever language the source article is in.
+      If you summarise a Dutch article, write the summary in English anyway.
+    job: |
+      Summarise. Sander wants the substance without having to open the article.
+      For each selected item give a one-line summary of what actually happened
+      and one line on why it matters to him specifically. Be concrete: name the
+      programme, the institution, the amount, the decision. Skip items that are
+      purely technical (model benchmarks, framework releases), US-domestic
+      politics with no European angle, or vendor announcements.
+    interests: |
+      - EU and Flemish research funding: Erasmus+, Horizon Europe, VLAIO,
+        Interreg. Calls, deadlines, budget decisions, programme changes,
+        evaluation and policy shifts. This is the highest-value category.
+      - Belgian and Dutch universities, hogescholen and research centres.
+        Anything about applied research, funding, or policy affecting them.
+      - AI seen from the non-technical side: adoption in organisations and in
+        the media sector, ethics, governance, regulation, labour effects,
+        equality and access. Media-sector AI adoption is especially relevant —
+        he runs a recurring survey on it in Flanders.
+      - Digitalisation and culture, digital ethics, digital inequality.
+
+  - name: "Wrap: Culture"
+    label: "Culture"
+    max_items: 6
+    mark_read: false
+    language: |
+      Match the source article. A Dutch article gets a Dutch line, an English
+      article gets a British English line. Do not translate, and do not mix
+      languages within a single item.
+      For Dutch, write the way a Dutchman living in Flanders writes: standard
+      Dutch with Flemish media vocabulary where that is the natural term, but
+      no expressions that only one side of the border would use.
+    job: |
+      Point, do not summarise. The pleasure here is in the reading, so a summary
+      is worse than the article. For each selected item write one line on what
+      it is and one line on why he would want to open it. Never give away the
+      argument of a review or the outcome of a recap. Think of it as a nudge,
+      not a substitute.
+    interests: |
+      - Music. His taste runs to sparse, piano-centred, emotionally direct
+        recordings: Japanese piano trio jazz (Ryo Fukui, Masaru Imada, Tsuyoshi
+        Yamamoto), contemporary and European jazz (Intakt and similar labels),
+        intimate vocal jazz, and songwriters in the Carole King / Laura Nyro
+        line. Also pop, rock and experimental music when the writing is good.
+        Interested in reissues, vinyl and CD culture, obituaries of musicians
+        he would know, and criticism worth reading for its own sake.
+      - RuPaul's Drag Race: casting, seasons, queens, anything substantial.
+      - Film: arthouse, festival news, major directors, and well-made mainstream
+        cinema. Not interested in superhero films or generic action.
+      - Skip: celebrity gossip, chart and box-office numbers as such, streaming
+        industry business news, awards-season horse race, quizzes and games,
+        US reality television other than Drag Race.
