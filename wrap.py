@@ -37,7 +37,7 @@ ANTHROPIC_VERSION = "2023-06-01"
 ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config.yml"
 STATE_PATH = ROOT / "state.json"
-OUTPUT_PATH = ROOT / "docs" / "digest.xml"
+DOCS_DIR = ROOT / "docs"
 
 TIMEOUT = 30
 
@@ -71,9 +71,16 @@ def load_config() -> dict:
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
-        return {"tags": {}, "published": []}
+        return {"tags": {}}
     with STATE_PATH.open(encoding="utf-8") as fh:
-        return json.load(fh)
+        state = json.load(fh)
+    # Migration from the single-feed layout: the archive used to live at the
+    # top level. Drop it, keep the per-tag timestamps, which are what matter.
+    state.pop("published", None)
+    state.setdefault("tags", {})
+    for tag_state in state["tags"].values():
+        tag_state.setdefault("published", [])
+    return state
 
 
 def save_state(state: dict) -> None:
@@ -300,8 +307,23 @@ def render_entry_html(label: str, picks: list[dict]) -> str:
     return f"<p><strong>{html.escape(label)}</strong></p>\n" + "\n<hr>\n".join(parts)
 
 
-def build_index(config: dict, published: list[dict]) -> str:
-    """A plain archive page, so the link on each Feedbin entry goes somewhere."""
+PAGE_CSS = """
+  body { max-width: 38rem; margin: 3rem auto; padding: 0 1.2rem;
+         font: 16px/1.6 -apple-system, Georgia, serif; color: #222; }
+  article { margin-bottom: 4rem; }
+  h2 { font-size: 1.3rem; border-bottom: 1px solid #ddd; padding-bottom: .4rem; }
+  h3 { font-size: 1rem; margin-bottom: .2rem; }
+  small { color: #777; }
+  em { color: #555; }
+  hr { border: 0; border-top: 1px solid #eee; margin: 1.5rem 0; }
+  a { color: #0a5; }
+  nav { margin-bottom: 2.5rem; font-size: .9rem; }
+"""
+
+
+def build_index(config: dict, tag_cfg: dict, published: list[dict]) -> str:
+    """Archive page for one tag, so each Feedbin entry has a link target."""
+    title = f"{config['feed_title']}: {tag_cfg['label']}"
     blocks = "\n".join(
         f'<article id="{html.escape(item["slug"])}">\n'
         f'<h2>{html.escape(item["title"])}</h2>\n{item["html"]}\n</article>'
@@ -311,37 +333,52 @@ def build_index(config: dict, published: list[dict]) -> str:
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(config['feed_title'])}</title>
-<style>
-  body {{ max-width: 38rem; margin: 3rem auto; padding: 0 1.2rem;
-         font: 16px/1.6 -apple-system, Georgia, serif; color: #222; }}
-  article {{ margin-bottom: 4rem; }}
-  h2 {{ font-size: 1.3rem; border-bottom: 1px solid #ddd; padding-bottom: .4rem; }}
-  h3 {{ font-size: 1rem; margin-bottom: .2rem; }}
-  small {{ color: #777; }}
-  em {{ color: #555; }}
-  hr {{ border: 0; border-top: 1px solid #eee; margin: 1.5rem 0; }}
-  a {{ color: #0a5; }}
-</style>
+<title>{html.escape(title)}</title>
+<style>{PAGE_CSS}</style>
 </head><body>
-<h1>{html.escape(config['feed_title'])}</h1>
+<nav><a href="./">All wraps</a></nav>
+<h1>{html.escape(title)}</h1>
 {blocks}
 </body></html>
 """
 
 
-def build_atom(config: dict, published: list[dict]) -> str:
+def build_home(config: dict) -> str:
+    """Tiny landing page linking the per-tag archives and feeds."""
+    rows = "\n".join(
+        f'<li><a href="{tag["slug"]}.html">{html.escape(tag["label"])}</a> '
+        f'&middot; <a href="{tag["slug"]}.xml">feed</a></li>'
+        for tag in config["tags"]
+    )
+    return f"""<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(config['feed_title'])}</title>
+<style>{PAGE_CSS}</style>
+</head><body>
+<h1>{html.escape(config['feed_title'])}</h1>
+<ul>
+{rows}
+</ul>
+</body></html>
+"""
+
+
+def build_atom(config: dict, tag_cfg: dict, published: list[dict]) -> str:
     site = config["site_url"].rstrip("/")
-    feed_url = f"{site}/digest.xml"
+    feed_url = f"{site}/{tag_cfg['slug']}.xml"
+    page_url = f"{site}/{tag_cfg['slug']}.html"
     updated = published[0]["updated"] if published else now_iso()
+    title = f"{config['feed_title']}: {tag_cfg['label']}"
 
     out = [
         '<?xml version="1.0" encoding="utf-8"?>',
         '<feed xmlns="http://www.w3.org/2005/Atom">',
-        f'  <title>{xml_escape(config["feed_title"])}</title>',
+        f'  <title>{xml_escape(title)}</title>',
         f'  <id>{xml_escape(feed_url)}</id>',
         f'  <link rel="self" href="{xml_escape(feed_url)}"/>',
-        f'  <link rel="alternate" href="{xml_escape(site)}/"/>',
+        f'  <link rel="alternate" href="{xml_escape(page_url)}"/>',
         f'  <updated>{updated}</updated>',
         f'  <author><name>{xml_escape(config["feed_author"])}</name></author>',
     ]
@@ -351,7 +388,7 @@ def build_atom(config: dict, published: list[dict]) -> str:
             f'    <title>{xml_escape(item["title"])}</title>',
             f'    <id>{xml_escape(item["id"])}</id>',
             f'    <updated>{item["updated"]}</updated>',
-            f'    <link rel="alternate" href="{xml_escape(site)}/#{xml_escape(item["slug"])}"/>',
+            f'    <link rel="alternate" href="{xml_escape(page_url)}#{xml_escape(item["slug"])}"/>',
             f'    <content type="html">{xml_escape(item["html"])}</content>',
             '  </entry>',
         ])
@@ -459,28 +496,33 @@ def main() -> None:
             log(f"  ! {tag_cfg['name']} failed: {exc}")
             results[tag_cfg["name"]] = None
 
-    new_entries = [
-        r["published_entry"] for r in results.values()
-        if r and r.get("published_entry")
-    ]
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
+    (DOCS_DIR / "index.html").write_text(build_home(config), encoding="utf-8")
 
-    if not new_entries:
-        log("\nNothing cleared the bar. Not publishing an empty entry.")
-    else:
-        state["published"] = new_entries + state.get("published", [])
-        state["published"] = state["published"][:config["keep_entries"]]
-        OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        OUTPUT_PATH.write_text(build_atom(config, state["published"]), encoding="utf-8")
-        (OUTPUT_PATH.parent / "index.html").write_text(
-            build_index(config, state["published"]), encoding="utf-8")
-        log(f"\nWrote {OUTPUT_PATH} with {len(state['published'])} entries")
-
-    # Only now, after a successful publish, do we advance state and mark read.
     for tag_cfg in config["tags"]:
         result = results.get(tag_cfg["name"])
         if not result:
             continue
-        state["tags"].setdefault(tag_cfg["name"], {})["since"] = result["next_since"]
+
+        tag_state = state["tags"].setdefault(tag_cfg["name"], {"published": []})
+        tag_state.setdefault("published", [])
+
+        if result.get("published_entry"):
+            tag_state["published"].insert(0, result["published_entry"])
+            tag_state["published"] = tag_state["published"][:config["keep_entries"]]
+            log(f"{tag_cfg['label']}: published")
+        else:
+            log(f"{tag_cfg['label']}: nothing cleared the bar, no entry added")
+
+        # Rewrite both files every run, even when nothing was added, so the
+        # feed stays valid and in step with config changes.
+        (DOCS_DIR / f"{tag_cfg['slug']}.xml").write_text(
+            build_atom(config, tag_cfg, tag_state["published"]), encoding="utf-8")
+        (DOCS_DIR / f"{tag_cfg['slug']}.html").write_text(
+            build_index(config, tag_cfg, tag_state["published"]), encoding="utf-8")
+
+        # Only now, after a successful write, advance state and mark read.
+        tag_state["since"] = result["next_since"]
         if tag_cfg.get("mark_read") and result["considered"]:
             mark_read(session, result["considered"])
 
