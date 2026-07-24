@@ -213,14 +213,29 @@ def strip_html(raw: str | None) -> str:
 
 def build_prompt(tag_cfg: dict, entries: list[dict], titles: dict[int, str],
                  snippet_chars: int) -> tuple[str, str]:
-    system = f"""You triage RSS items for one specific reader, Sander. He works in \
-applied research and communication at a Flemish university of applied sciences.
+    system = f"""You are an editor curating a digest from a batch of RSS items.
 
-Your job for this batch:
+There are two separate jobs here. Keep them apart.
+
+--- SELECTION (private) ---
+Use this profile to decide what to include. It is the reader's, and it never
+appears in what you write:
+
+{tag_cfg['interests']}
+
+--- WRITING (public) ---
 {tag_cfg['job']}
 
-What he cares about:
-{tag_cfg['interests']}
+Write as though for the whole readership of a good publication, not for one
+person. This matters:
+- Never refer to the reader, in any grammatical person. No "he", "his", "you",
+  "your", "the reader", "our reader".
+- Never say an item suits someone's taste, interests, field or work. If the
+  only thing you can say is that someone would like it, you have not found the
+  hook yet, so look again at the item itself.
+- The second line is not a justification for the pick. It is the thing that
+  makes the item worth attention: the claim, the angle, the stakes, the person
+  involved, what is unusual about it.
 
 Rules:
 - Select at most {tag_cfg['max_items']} items. Fewer is fine and often correct.

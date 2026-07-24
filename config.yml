@@ -6,7 +6,7 @@
 
 # Where the published feed will live. Used for the Atom feed's own <id>
 # and self link. Set this after you enable GitHub Pages.
-site_url: "https://YOURNAME.github.io/feedbin-wrap"
+site_url: "https://sndrspk.github.io/claude-rss-wrap"
 
 feed_title: "Wrap"
 feed_author: "Feedbin Wrap"
@@ -41,7 +41,6 @@ tags:
   - name: "Wrap: Tech and Science"
     # Shown as the entry title in Feedbin.
     label: "Tech and Science"
-    # Filenames: <slug>.xml is the feed, <slug>.html the archive page.
     slug: "tech-and-science"
     max_items: 6
     # true  = script marks everything it considered as read in Feedbin
@@ -51,11 +50,11 @@ tags:
       British English throughout, whatever language the source article is in.
       If you summarise a Dutch article, write the summary in English anyway.
     job: |
-      Summarise. Sander wants the substance without having to open the article.
-      For each selected item give a one-line summary of what actually happened
-      and one line on why it matters to him specifically. Be concrete: name the
-      programme, the institution, the amount, the decision. Skip items that are
-      purely technical (model benchmarks, framework releases), US-domestic
+      Summarise, so the item can be understood without opening the article.
+      First line: what actually happened. Second line: what is at stake, what
+      changes, or who is affected. Be concrete throughout: name the programme,
+      the institution, the amount, the decision, the deadline. Skip items that
+      are purely technical (model benchmarks, framework releases), US-domestic
       politics with no European angle, or vendor announcements.
     interests: |
       - EU and Flemish research funding: Erasmus+, Horizon Europe, VLAIO,
@@ -65,8 +64,7 @@ tags:
         Anything about applied research, funding, or policy affecting them.
       - AI seen from the non-technical side: adoption in organisations and in
         the media sector, ethics, governance, regulation, labour effects,
-        equality and access. Media-sector AI adoption is especially relevant —
-        he runs a recurring survey on it in Flanders.
+        equality and access. Media-sector AI adoption ranks especially high.
       - Digitalisation and culture, digital ethics, digital inequality.
 
   - name: "Wrap: Culture"
@@ -83,21 +81,28 @@ tags:
       no expressions that only one side of the border would use.
     job: |
       Point, do not summarise. The pleasure here is in the reading, so a summary
-      is worse than the article. For each selected item write one line on what
-      it is and one line on why he would want to open it. Never give away the
-      argument of a review or the outcome of a recap. Think of it as a nudge,
-      not a substitute.
+      is worse than the article. First line: what the piece is. Second line: the
+      hook, meaning the specific thing in it that earns the click, such as the
+      claim being made, the angle taken, who is speaking, or what is surprising.
+      Never give away the argument of a review or the outcome of a recap. A
+      teaser, not a substitute.
     interests: |
-      - Music. His taste runs to sparse, piano-centred, emotionally direct
+      - Culture: anything that's a main pop culture trend or vibe shift or
+        bigger movement.
+      - Music. Favours sparse, piano-centred, emotionally direct
         recordings: Japanese piano trio jazz (Ryo Fukui, Masaru Imada, Tsuyoshi
         Yamamoto), contemporary and European jazz (Intakt and similar labels),
         intimate vocal jazz, and songwriters in the Carole King / Laura Nyro
-        line. Also pop, rock and experimental music when the writing is good.
-        Interested in reissues, vinyl and CD culture, obituaries of musicians
-        he would know, and criticism worth reading for its own sake.
+        line. Also (indie) pop, (indie) rock, loud music, hardcore, punk, metal
+        and experimental music, where the writing is good and the music is more
+        interesting than straight mainstream fare. Bigger pop culture and music
+        trends count too. Reissues, vinyl and CD culture, obituaries of
+        musicians with a real place in the canon, and criticism worth reading
+        for its own sake.
       - RuPaul's Drag Race: casting, seasons, queens, anything substantial.
+      - B&B Vol Liefde, Winter Vol Liefde and B&B Zkt. Lief
       - Film: arthouse, festival news, major directors, and well-made mainstream
         cinema. Not interested in superhero films or generic action.
-      - Skip: celebrity gossip, chart and box-office numbers as such, streaming
-        industry business news, awards-season horse race, quizzes and games,
-        US reality television other than Drag Race.
+      - Skip: celebrity gossip, chart and box-office numbers as such, awards-season
+        horse race, quizzes and games, US reality television other than Drag Race
+        and the B&B shows.
