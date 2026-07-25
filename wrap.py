@@ -342,11 +342,11 @@ def render_entry_html(label: str, picks: list[dict]) -> str:
         source = html.escape(pick.get("source", ""))
         summary = html.escape(pick.get("summary", ""))
         why = html.escape(pick.get("why", ""))
+        blurb = " ".join(part for part in (summary, why) if part)
         parts.append(
             f'<h3><a href="{url}">{title}</a></h3>\n'
             f'<p><small>{source}</small></p>\n'
-            f'<p>{summary}</p>\n'
-            f'<p><em>{why}</em></p>'
+            f'<p>{blurb}</p>'
         )
     return f"<p><strong>{html.escape(label)}</strong></p>\n" + "\n<hr>\n".join(parts)
 
