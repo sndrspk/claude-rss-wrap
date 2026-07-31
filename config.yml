@@ -45,7 +45,7 @@ tags:
     max_items: 6
     # true  = script marks everything it considered as read in Feedbin
     # false = your unread counts are left alone
-    mark_read: false
+    mark_read: true
     language: |
       British English throughout, whatever language the source article is in.
       If you summarise a Dutch article, write the summary in English anyway.
@@ -71,7 +71,7 @@ tags:
     label: "Culture"
     slug: "culture"
     max_items: 6
-    mark_read: false
+    mark_read: true
     language: |
       Match the source article. A Dutch article gets a Dutch line, an English
       article gets a British English line. Do not translate, and do not mix
