@@ -4,8 +4,18 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-08-21T05:57:49.019184Z</updated>
+  <updated>2026-08-22T05:53:14.127498Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 22 August</title>
+    <id>tag:feedbin-wrap,2026-08-22:aab22aaf72a6</id>
+    <updated>2026-08-22T05:53:14.127498Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#aab22aaf72a6"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://www.wired.com/story/the-single-english-county-saying-no-to-palantir/"&gt;The Single English County Saying No to Palantir&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Greater Manchester is resisting pressure to join a large NHS data contract with Palantir, arguing it can run the service itself, as UK campaigners call for the deal to be scrapped. Direct case of public-sector AI/data governance and non-technical adoption, with a local authority pushing back against a major vendor contract on ethical and control grounds.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 21 August</title>
     <id>tag:feedbin-wrap,2026-08-21:f42b7ccd17e1</id>
