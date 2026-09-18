@@ -4,8 +4,38 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-09-16T10:10:52.733381Z</updated>
+  <updated>2026-09-18T09:58:44.675082Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 18 September</title>
+    <id>tag:feedbin-wrap,2026-09-18:5423f0f3ed92</id>
+    <updated>2026-09-18T09:58:44.675082Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#5423f0f3ed92"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/horizon-europe/proposal-horizon-europe-expert-councils-exposes-parliamentary-rift"&gt;Proposal for Horizon Europe expert councils exposes parliamentary rift&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The European Parliament&amp;#x27;s research committee is negotiating behind closed doors over whether the next Horizon Europe programme should be governed by councils of outside experts, with MEPs split and a vote postponed from its scheduled September date. This is a live governance fight over how the EU&amp;#x27;s flagship research programme, worth tens of billions of euros, will be run in its next phase.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/research-and-innovation-gap/horizon-europe-how-are-ukraine-and-moldova-faring"&gt;Horizon Europe: How are Ukraine and Moldova faring?&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Ukraine and Moldova, both associate members of Horizon Europe, have steadily increased their participation in the programme since joining, with Moldova associated since 2012 under an earlier framework. It tracks how EU research funding integration is progressing for two candidate countries, a template relevant to future enlargement.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/ai/can-researchers-trust-ai-models-wont-leak-their-ideas"&gt;Can researchers trust that AI models won’t leak their ideas?&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Research funders are grappling with how to stop confidential ideas in grant proposals leaking through large language models, after a row broke out last week over reviewers using AI to assess applications. It exposes a governance gap at the intersection of research funding evaluation and AI adoption, with direct implications for how grants are judged.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.404media.co/doom-loop-openai-and-microsoft-admits-llms-are-destroying-the-web-and-built-on-theft/"&gt;‘Doom Loop’: OpenAI and Microsoft Admits LLMs Are Destroying the Web and Built on Theft&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;404 Media&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;An unsealed court filing in the New York Times v. OpenAI lawsuit reveals Microsoft and OpenAI staff internally describing AI training as an &amp;quot;astonishing theft&amp;quot; of published work that is creating a &amp;quot;doom loop&amp;quot; killing the web. It is a rare admission from inside the companies about how generative AI&amp;#x27;s growth depends on unlicensed use of news content, central to the media sector&amp;#x27;s AI reckoning.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.404media.co/spotify-ai-music-scam/"&gt;I Hijacked a Real Artist&amp;#x27;s Spotify with AI Music. It Was Disturbingly Easy&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;404 Media&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;A 404 Media reporter used the AI music generator Udio to release a fake track on a real band&amp;#x27;s verified Spotify page, exploiting a long-standing loophole in how music gets distributed to streaming platforms. It demonstrates, concretely and reproducibly, how easily AI-generated content can hijack artists&amp;#x27; identities and divert royalties, a direct case of AI adoption harming the media sector.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/ai/commit-fully-developing-frontier-ai-europe-or-focus-leverage-eu-leaders-told"&gt;Commit fully to developing frontier AI in Europe or focus on leverage, EU leaders told&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Experts told EU leaders that Europe must either commit vast financial and political capital to building a genuine European frontier AI company, or abandon that ambition and instead focus on securing leverage over access to foreign AI models. It frames a concrete strategic choice facing EU policymakers on AI industrial policy and dependency, not a technical AI story but a governance one.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 16 September</title>
     <id>tag:feedbin-wrap,2026-09-16:6cb33f9e3760</id>
