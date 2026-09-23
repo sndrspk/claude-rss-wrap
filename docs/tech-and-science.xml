@@ -4,8 +4,38 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-09-18T09:58:44.675082Z</updated>
+  <updated>2026-09-23T10:12:11.901412Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 23 September</title>
+    <id>tag:feedbin-wrap,2026-09-23:7b9e9b91b2f1</id>
+    <updated>2026-09-23T10:12:11.901412Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#7b9e9b91b2f1"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/european-research-council/us-based-erc-winners-count-reasons-returning-europe"&gt;US-based ERC winners count the reasons for returning to Europe&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Applications for ERC Starting Grants from US-based researchers jumped to 170 this year, up from 113 in 2025 and 58 in 2024, and the 20 US winners must now relocate to Europe to take up their grants. Direct evidence of a shift in European research funding dynamics driven by US conditions, relevant to Horizon Europe/ERC policy.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/horizon-europe/will-horizon-europe-missions-survive"&gt;Will the Horizon Europe Missions survive?&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;A five-year assessment of Horizon Europe&amp;#x27;s Missions programme gave it good marks, but its future within the EU&amp;#x27;s research policy remains uncertain. Concerns the design and continuation of a major Horizon Europe policy instrument.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/horizon-europe/data-corner-central-and-eastern-european-countries-get-larger-usual-share"&gt;Data Corner: Central and eastern European countries get larger than usual share in EU Missions&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;European Commission data show central and eastern European countries win a larger relative share of Horizon Europe&amp;#x27;s Missions funding than they do from Horizon Europe overall, though not necessarily more money in absolute terms. Direct data on how EU research funding is distributed across member states.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/research-infrastructures/funding-radar-eu32-million-pilot-ai-science-projects"&gt;Funding Radar: €32 million to pilot AI in science projects&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The European Commission is launching a €32 million call this week under Horizon Europe&amp;#x27;s Raise programme to fund AI systems for automated, closed-loop scientific experimentation. A concrete Horizon Europe funding call with budget and programme details, combining EU research funding with AI adoption.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.404media.co/meta-tests-muse-ai-agent-calls-that-are-actually-made-by-humans-in-a-call-center/"&gt;Meta Tests Muse AI Agent Calls That Are Actually Made By Humans in a Call Center&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;404 Media&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Meta&amp;#x27;s AI agent Muse, publicised as able to autonomously call businesses to book reservations, is actually being tested with human call-centre agents handling the conversations. Exposes a gap between AI marketing claims and actual practice, relevant to AI governance and adoption ethics.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.404media.co/people-training-openais-ai-fired-for-using-ai-to-train-the-ai/"&gt;People Training OpenAI’s AI Fired for Using AI to Train the AI&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;404 Media&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Contractors hired by OpenAI to manually review and improve ChatGPT responses are being fired for secretly using AI tools to generate the very training feedback they are meant to supply by hand. Illustrates labour effects and quality risks in AI development, including the irony of AI-on-AI training degradation.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 18 September</title>
     <id>tag:feedbin-wrap,2026-09-18:5423f0f3ed92</id>
