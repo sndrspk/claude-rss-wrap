@@ -1,8 +1,9 @@
 # Migration plan: Anthropic → Mistral API
 
-Status: planned, not yet executed. The app currently runs Claude via the
-Anthropic API. This document is the step-by-step plan to switch it to the
-Mistral API without interrupting the daily scheduled runs.
+Status: step 1 implemented (on a branch, pending merge); steps 2-5 pending.
+The app currently runs Claude via the Anthropic API. This document is the
+step-by-step plan to switch it to the Mistral API without interrupting the
+daily scheduled runs.
 
 ## Current state
 
@@ -41,7 +42,13 @@ anything else.
 
 ## Steps
 
-### Step 1 — Add Mistral support alongside Claude (no cutover)
+### Step 1 — Add Mistral support alongside Claude (no cutover) — DONE
+
+Implemented as described below: `provider` key in `config.yml` (default
+`anthropic`), `call_mistral()` alongside `call_anthropic()` in `wrap.py`,
+and the Mistral-specific `finish_reason="length"` truncation hint.
+
+Original plan:
 
 - Refactor `call_claude()` into a thin provider layer in `wrap.py`: a new
   `call_mistral()` implementing the Mistral request/response shape per the
