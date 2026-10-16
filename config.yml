@@ -11,8 +11,13 @@ site_url: "https://sndrspk.github.io/claude-rss-wrap"
 feed_title: "Wrap"
 feed_author: "Feedbin Wrap"
 
-# Anthropic model used for the triage step.
-# Current IDs are listed at https://docs.claude.com/en/docs/about-claude/models
+# Triage provider: "anthropic" (Claude) or "mistral".
+# See docs/migration-mistral.md for the switch plan.
+provider: "anthropic"
+
+# AI model used for the triage step.
+# anthropic IDs: https://docs.claude.com/en/docs/about-claude/models
+# mistral IDs:   https://docs.mistral.ai/api/endpoints/
 model: "claude-sonnet-5"
 
 # How many past entries to keep in the Atom file. Feedbin polls on its own

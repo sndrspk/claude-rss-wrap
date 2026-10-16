@@ -12,7 +12,13 @@ Anthropic call or the render fails, the next run re-covers the same window
 rather than silently dropping a day.
 
 Environment:
-    FEEDBIN_EMAIL, FEEDBIN_PASSWORD, ANTHROPIC_API_KEY
+    FEEDBIN_EMAIL, FEEDBIN_PASSWORD
+    ANTHROPIC_API_KEY when provider is "anthropic",
+    MISTRAL_API_KEY when provider is "mistral".
+
+The triage provider is selected with the `provider` key in config.yml.
+Currently "anthropic" (Claude) and "mistral" are supported. See
+config.yml and docs/migration-mistral.md.
 """
 
 from __future__ import annotations
@@ -33,6 +39,9 @@ import yaml
 FEEDBIN = "https://api.feedbin.com/v2"
 ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 ANTHROPIC_VERSION = "2023-06-01"
+MISTRAL_URL = "https://api.mistral.ai/v1/chat/completions"
+
+PROVIDERS = ("anthropic", "mistral")
 
 ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = ROOT / "config.yml"
@@ -192,7 +201,7 @@ def mark_read(session: requests.Session, entry_ids: list[int]) -> None:
     log(f"  marked {len(entry_ids)} entries read")
 
 
-# ------------------------------------------------------------------- claude
+# ---------------------------------------------------------------- provider
 
 def strip_html(raw: str | None) -> str:
     if not raw:
@@ -275,8 +284,8 @@ def extract_json(text: str) -> str:
     return text
 
 
-def call_claude(model: str, system: str, user: str, api_key: str,
-                max_tokens: int = 8000) -> list[dict]:
+def call_anthropic(model: str, system: str, user: str, api_key: str,
+                   max_tokens: int = 8000) -> list[dict]:
     payload = {
         "model": model,
         "max_tokens": max_tokens,
@@ -318,17 +327,74 @@ def call_claude(model: str, system: str, user: str, api_key: str,
                     f"no text in response (stop_reason={stop}, blocks={types}). "
                     "If stop_reason is max_tokens, raise max_tokens in config.yml."
                 )
-            try:
-                return json.loads(extract_json(text)).get("selected", [])
-            except json.JSONDecodeError as exc:
-                # Show what actually came back rather than failing blind.
-                log(f"  ! unparseable response (stop_reason={stop}): "
-                    f"{text[:300]!r}")
-                raise RuntimeError(f"could not parse response as JSON: {exc}") from exc
+            return parse_selection(text, stop)
         except Exception as exc:  # noqa: BLE001
             last_error = exc
             time.sleep(3)
     raise RuntimeError(f"Anthropic call failed after 3 attempts: {last_error}")
+
+
+def call_mistral(model: str, system: str, user: str, api_key: str,
+                 max_tokens: int = 8000) -> list[dict]:
+    payload = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+    }
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "content-type": "application/json",
+    }
+    log(f"  sending {len(user):,} characters to {model}")
+
+    last_error = None
+    for attempt in range(3):
+        try:
+            response = requests.post(MISTRAL_URL, json=payload,
+                                     headers=headers, timeout=180)
+            if response.status_code in (429, 500, 502, 503):
+                wait = 5 * (attempt + 1)
+                log(f"  retrying after {response.status_code} in {wait}s")
+                time.sleep(wait)
+                continue
+            response.raise_for_status()
+            data = response.json()
+            choice = (data.get("choices") or [{}])[0]
+            stop = choice.get("finish_reason")
+            usage = data.get("usage", {})
+            log(f"  finish_reason={stop} in={usage.get('prompt_tokens')} "
+                f"out={usage.get('completion_tokens')}")
+
+            text = choice.get("message", {}).get("content") or ""
+            if not text.strip():
+                raise RuntimeError(
+                    f"no text in response (finish_reason={stop}). "
+                    "If finish_reason is length, raise max_tokens in config.yml."
+                )
+            return parse_selection(text, stop)
+        except Exception as exc:  # noqa: BLE001
+            last_error = exc
+            time.sleep(3)
+    raise RuntimeError(f"Mistral call failed after 3 attempts: {last_error}")
+
+
+def parse_selection(text: str, stop: str | None) -> list[dict]:
+    try:
+        return json.loads(extract_json(text)).get("selected", [])
+    except json.JSONDecodeError as exc:
+        # Show what actually came back rather than failing blind.
+        log(f"  ! unparseable response (stop={stop}): {text[:300]!r}")
+        raise RuntimeError(f"could not parse response as JSON: {exc}") from exc
+
+
+def call_provider(provider: str, model: str, system: str, user: str,
+                  api_key: str, max_tokens: int) -> list[dict]:
+    if provider == "mistral":
+        return call_mistral(model, system, user, api_key, max_tokens)
+    return call_anthropic(model, system, user, api_key, max_tokens)
 
 
 # --------------------------------------------------------------------- atom
@@ -482,9 +548,9 @@ def process_tag(session, config, tag_cfg, tag_feeds, titles, api_key, state):
                 entry["_text"] = extracted
 
     system, user = build_prompt(tag_cfg, entries, titles, config["snippet_chars"])
-    selected = call_claude(config["model"], system, user, api_key,
-                           config.get("max_tokens", 8000))
-    log(f"  Claude selected {len(selected)} of {len(entries)}")
+    selected = call_provider(config["provider"], config["model"], system, user,
+                             api_key, config.get("max_tokens", 8000))
+    log(f"  {config['provider']} selected {len(selected)} of {len(entries)}")
 
     picks = []
     for choice in selected[:tag_cfg["max_items"]]:
@@ -523,7 +589,11 @@ def process_tag(session, config, tag_cfg, tag_feeds, titles, api_key, state):
 def main() -> None:
     config = load_config()
     state = load_state()
-    api_key = env("ANTHROPIC_API_KEY")
+    provider = config.get("provider", "anthropic")
+    if provider not in PROVIDERS:
+        die(f"unknown provider {provider!r}, expected one of {PROVIDERS}")
+    api_key = env("MISTRAL_API_KEY" if provider == "mistral"
+                  else "ANTHROPIC_API_KEY")
 
     session = feedbin_session()
     check_auth(session)

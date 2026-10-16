@@ -38,7 +38,10 @@ than silently dropping a day.
 
 See the comments in `config.yml`. Key knobs:
 
-- `model` — AI model ID used for the triage step.
+- `provider` — AI provider for the triage step: `anthropic` (Claude) or
+  `mistral`. The matching secret (`ANTHROPIC_API_KEY` or `MISTRAL_API_KEY`)
+  is picked automatically.
+- `model` — AI model ID used for the triage step, for the chosen provider.
 - `max_entries_per_tag` — hard ceiling on entries sent per tag per run.
 - `snippet_chars` — characters of article text sent per entry.
 - `max_tokens` — output budget per triage call. Raise it if logs show
@@ -60,8 +63,9 @@ Actions):
 
 - `FEEDBIN_EMAIL`
 - `FEEDBIN_PASSWORD`
-- `ANTHROPIC_API_KEY` (see `docs/migration-mistral.md` for the planned
-  switch to `MISTRAL_API_KEY`)
+- `ANTHROPIC_API_KEY` — used when `provider: anthropic` (the current
+  default; see `docs/migration-mistral.md` for the planned switch)
+- `MISTRAL_API_KEY` — used when `provider: mistral`
 
 ## Running
 
