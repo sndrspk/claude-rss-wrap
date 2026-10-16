@@ -34,6 +34,7 @@ jobs:
           FEEDBIN_EMAIL: ${{ secrets.FEEDBIN_EMAIL }}
           FEEDBIN_PASSWORD: ${{ secrets.FEEDBIN_PASSWORD }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
         run: python wrap.py
 
       - name: Commit if anything changed

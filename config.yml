@@ -20,6 +20,20 @@ provider: "anthropic"
 # mistral IDs:   https://docs.mistral.ai/api/endpoints/
 model: "claude-sonnet-5"
 
+# Side-by-side comparison mode (see docs/migration-mistral.md, step 3):
+# when true, every run queries BOTH providers on the same batch and each
+# publishes its own entry, suffixed with the provider name in the title,
+# e.g. "Tech and Science, 16 October (mistral)". Both API keys must be set.
+# Requires the section below. Turn off (and delete) after the comparison.
+compare_providers: false
+
+# Models used in comparison mode, one per provider.
+compare_models:
+  anthropic:
+    model: "claude-sonnet-5"
+  mistral:
+    model: "mistral-medium-latest"
+
 # How many past entries to keep in the Atom file. Feedbin polls on its own
 # schedule, so keeping a rolling window means nothing is missed if it polls
 # less often than the job runs.
