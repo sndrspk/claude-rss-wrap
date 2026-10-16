@@ -25,7 +25,9 @@ model: "claude-sonnet-5"
 # publishes its own entry, suffixed with the provider name in the title,
 # e.g. "Tech and Science, 16 October (mistral)". Both API keys must be set.
 # Requires the section below. Turn off (and delete) after the comparison.
-compare_providers: false
+# CURRENTLY ON for the step 3 comparison period. Set back to false for the
+# cutover (step 4).
+compare_providers: true
 
 # Models used in comparison mode, one per provider.
 compare_models:

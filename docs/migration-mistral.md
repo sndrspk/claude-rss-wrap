@@ -1,9 +1,9 @@
 # Migration plan: Anthropic → Mistral API
 
-Status: steps 1-2 done; step 3 tooling in place (compare mode); steps 4-5
-pending. The app currently runs Claude via the Anthropic API. This document is the
-step-by-step plan to switch it to the Mistral API without interrupting the
-daily scheduled runs.
+Status: steps 1-2 done; step 3 comparison period RUNNING
+(`compare_providers: true` on main); steps 4-5 pending. The app currently
+runs both Claude and Mistral side by side; the entries are suffixed with
+the provider name until the cutover.
 
 ## Current state
 
