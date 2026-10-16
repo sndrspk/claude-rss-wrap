@@ -1,7 +1,7 @@
 # Migration plan: Anthropic → Mistral API
 
-Status: step 1 implemented (on a branch, pending merge); steps 2-5 pending.
-The app currently runs Claude via the Anthropic API. This document is the
+Status: steps 1-2 done; step 3 tooling in place (compare mode); steps 4-5
+pending. The app currently runs Claude via the Anthropic API. This document is the
 step-by-step plan to switch it to the Mistral API without interrupting the
 daily scheduled runs.
 
@@ -64,7 +64,10 @@ Original plan:
   the Mistral equivalent is `finish_reason="length"`. The refactor must map
   this correctly or truncation failures become confusing.
 
-### Step 2 — Secrets and workflow
+### Step 2 — Secrets and workflow — DONE
+
+`MISTRAL_API_KEY` secret added by the owner; `wrap.yml` now passes both
+keys.
 
 - Add `MISTRAL_API_KEY` to the GitHub repository secrets.
 - Update `wrap.yml` to pass the Mistral secret as well, so a branch or a
@@ -74,7 +77,11 @@ Original plan:
 
 ### Step 3 — Validation (side-by-side)
 
-Trigger manual (`workflow_dispatch`) runs, or run locally, comparing:
+Comparison mode is built in: set `compare_providers: true` in `config.yml`
+and each run queries both providers on the same batch, publishing two
+entries per tag per run, suffixed `(anthropic)` and `(mistral)` in the
+title (models from the `compare_models` section). Run it for a few days,
+subscribing in Feedbin as usual, and compare:
 
 - JSON parse reliability on real batches
 - selection quality against each tag's `interests` profile

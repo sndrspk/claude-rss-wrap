@@ -41,6 +41,11 @@ See the comments in `config.yml`. Key knobs:
 - `provider` — AI provider for the triage step: `anthropic` (Claude) or
   `mistral`. The matching secret (`ANTHROPIC_API_KEY` or `MISTRAL_API_KEY`)
   is picked automatically.
+- `compare_providers` — side-by-side mode: query both providers on the same
+  batch and publish one entry per provider, suffixed `(anthropic)` /
+  `(mistral)` in the title. Needs both secrets and the `compare_models`
+  section. Temporary tool for the provider switch; see
+  `docs/migration-mistral.md`.
 - `model` — AI model ID used for the triage step, for the chosen provider.
 - `max_entries_per_tag` — hard ceiling on entries sent per tag per run.
 - `snippet_chars` — characters of article text sent per entry.
@@ -63,9 +68,8 @@ Actions):
 
 - `FEEDBIN_EMAIL`
 - `FEEDBIN_PASSWORD`
-- `ANTHROPIC_API_KEY` — used when `provider: anthropic` (the current
-  default; see `docs/migration-mistral.md` for the planned switch)
-- `MISTRAL_API_KEY` — used when `provider: mistral`
+- `ANTHROPIC_API_KEY` — used when `provider: anthropic` and in compare mode
+- `MISTRAL_API_KEY` — used when `provider: mistral` and in compare mode
 
 ## Running
 

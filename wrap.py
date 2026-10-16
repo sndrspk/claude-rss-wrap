@@ -508,6 +508,39 @@ def build_atom(config: dict, tag_cfg: dict, published: list[dict]) -> str:
 
 # --------------------------------------------------------------------- main
 
+def build_picks(selected: list[dict], entries: list[dict], tag_cfg: dict,
+                titles: dict[int, str]) -> list[dict]:
+    picks = []
+    for choice in selected[:tag_cfg["max_items"]]:
+        try:
+            entry = entries[int(choice["index"])]
+        except (KeyError, ValueError, IndexError):
+            continue
+        picks.append({
+            "entry": entry,
+            "source": titles.get(entry.get("feed_id"), ""),
+            "summary": choice.get("summary", ""),
+            "why": choice.get("why", ""),
+        })
+    return picks
+
+
+def build_published_entry(tag_cfg: dict, picks: list[dict],
+                          suffix: str = "") -> dict:
+    name = tag_cfg["name"]
+    stamp = datetime.now(timezone.utc)
+    digest = hashlib.sha1(
+        f"{name}{stamp.date()}{picks[0]['entry']['id']}{suffix}".encode()
+    ).hexdigest()[:12]
+    return {
+        "id": f"tag:feedbin-wrap,{stamp.date()}:{digest}",
+        "slug": digest,
+        "title": f"{tag_cfg['label']}, {stamp.strftime('%-d %B')}{suffix}",
+        "updated": now_iso(),
+        "html": render_entry_html(tag_cfg["label"], picks),
+    }
+
+
 def process_tag(session, config, tag_cfg, tag_feeds, titles, api_key, state):
     name = tag_cfg["name"]
     log(f"\n== {name}")
@@ -548,40 +581,43 @@ def process_tag(session, config, tag_cfg, tag_feeds, titles, api_key, state):
                 entry["_text"] = extracted
 
     system, user = build_prompt(tag_cfg, entries, titles, config["snippet_chars"])
+
+    if isinstance(api_key, dict):
+        # Side-by-side comparison mode: every enabled provider gets the same
+        # batch and publishes its own entry, suffixed with its display name.
+        selected_by_provider = {}
+        for p in PROVIDERS:
+            model = config["compare_models"][p]["model"]
+            selected_by_provider[p] = call_provider(
+                p, model, system, user, api_key[p],
+                config["compare_models"][p].get("max_tokens", 8000))
+            log(f"  {p} selected {len(selected_by_provider[p])} of {len(entries)}")
+
+        published_entries = []
+        for p in PROVIDERS:
+            picks = build_picks(selected_by_provider[p], entries, tag_cfg, titles)
+            if not picks:
+                continue
+            published_entries.append(
+                build_published_entry(tag_cfg, picks, suffix=f" ({p})")
+            )
+
+        return {
+            "considered": considered_ids,
+            "published_entries": published_entries,
+            "next_since": next_since,
+        }
+
     selected = call_provider(config["provider"], config["model"], system, user,
                              api_key, config.get("max_tokens", 8000))
     log(f"  {config['provider']} selected {len(selected)} of {len(entries)}")
 
-    picks = []
-    for choice in selected[:tag_cfg["max_items"]]:
-        try:
-            entry = entries[int(choice["index"])]
-        except (KeyError, ValueError, IndexError):
-            continue
-        picks.append({
-            "entry": entry,
-            "source": titles.get(entry.get("feed_id"), ""),
-            "summary": choice.get("summary", ""),
-            "why": choice.get("why", ""),
-        })
-
-    published_entry = None
-    if picks:
-        stamp = datetime.now(timezone.utc)
-        digest = hashlib.sha1(
-            f"{name}{stamp.date()}{picks[0]['entry']['id']}".encode()
-        ).hexdigest()[:12]
-        published_entry = {
-            "id": f"tag:feedbin-wrap,{stamp.date()}:{digest}",
-            "slug": digest,
-            "title": f"{tag_cfg['label']}, {stamp.strftime('%-d %B')}",
-            "updated": now_iso(),
-            "html": render_entry_html(tag_cfg["label"], picks),
-        }
+    picks = build_picks(selected, entries, tag_cfg, titles)
+    published_entry = build_published_entry(tag_cfg, picks) if picks else None
 
     return {
         "considered": considered_ids,
-        "published_entry": published_entry,
+        "published_entries": [published_entry] if published_entry else [],
         "next_since": next_since,
     }
 
@@ -592,8 +628,17 @@ def main() -> None:
     provider = config.get("provider", "anthropic")
     if provider not in PROVIDERS:
         die(f"unknown provider {provider!r}, expected one of {PROVIDERS}")
-    api_key = env("MISTRAL_API_KEY" if provider == "mistral"
-                  else "ANTHROPIC_API_KEY")
+    if config.get("compare_providers"):
+        api_keys = {}
+        for p in PROVIDERS:
+            var = "MISTRAL_API_KEY" if p == "mistral" else "ANTHROPIC_API_KEY"
+            try:
+                api_keys[p] = env(var)
+            except SystemExit:
+                die(f"compare_providers needs {var} set")
+    else:
+        api_key = env("MISTRAL_API_KEY" if provider == "mistral"
+                      else "ANTHROPIC_API_KEY")
 
     session = feedbin_session()
     check_auth(session)
@@ -604,7 +649,8 @@ def main() -> None:
     for tag_cfg in config["tags"]:
         try:
             results[tag_cfg["name"]] = process_tag(
-                session, config, tag_cfg, tag_feeds, titles, api_key, state
+                session, config, tag_cfg, tag_feeds, titles,
+                api_keys if config.get("compare_providers") else api_key, state
             )
         except Exception as exc:  # noqa: BLE001
             # One tag failing must not advance the other tag's state.
@@ -626,8 +672,9 @@ def main() -> None:
             # feed URL keeps resolving instead of 404ing, but flag it loudly.
             failures.append(tag_cfg["name"])
             log(f"{tag_cfg['label']}: FAILED, feed left at its previous contents")
-        elif result.get("published_entry"):
-            tag_state["published"].insert(0, result["published_entry"])
+        elif result.get("published_entries"):
+            for entry in result["published_entries"]:
+                tag_state["published"].insert(0, entry)
             tag_state["published"] = tag_state["published"][:config["keep_entries"]]
             log(f"{tag_cfg['label']}: published")
         else:
