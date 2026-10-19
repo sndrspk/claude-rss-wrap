@@ -13,21 +13,20 @@ feed_author: "Feedbin Wrap"
 
 # Triage provider: "anthropic" (Claude) or "mistral".
 # See docs/migration-mistral.md for the switch plan.
-provider: "anthropic"
+provider: "mistral"
 
 # AI model used for the triage step.
 # anthropic IDs: https://docs.claude.com/en/docs/about-claude/models
 # mistral IDs:   https://docs.mistral.ai/api/endpoints/
-model: "claude-sonnet-5"
+model: "mistral-medium-latest"
 
 # Side-by-side comparison mode (see docs/migration-mistral.md, step 3):
 # when true, every run queries BOTH providers on the same batch and each
 # publishes its own entry, suffixed with the provider name in the title,
 # e.g. "Tech and Science, 16 October (mistral)". Both API keys must be set.
 # Requires the section below. Turn off (and delete) after the comparison.
-# CURRENTLY ON for the step 3 comparison period. Set back to false for the
-# cutover (step 4).
-compare_providers: true
+# Comparison period ran 16-19 Oct 2026; cutover to Mistral done (step 4).
+compare_providers: false
 
 # Models used in comparison mode, one per provider.
 compare_models:
