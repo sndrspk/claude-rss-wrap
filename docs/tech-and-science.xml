@@ -4,8 +4,38 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-10-19T11:04:32.326505Z</updated>
+  <updated>2026-10-21T10:26:06.008470Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 21 October</title>
+    <id>tag:feedbin-wrap,2026-10-21:de33469d1a73</id>
+    <updated>2026-10-21T10:26:06.008470Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#de33469d1a73"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/israeli-spyware-targeted-belgrade-university-rector-amid-serbia-protests/"&gt;Israeli spyware targeted Belgrade university rector amid Serbia protests&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Israeli Pegasus spyware was used to infect the phone of the rector of the University of Belgrade, Vladan Đokić, a supporter of student protests against Serbia’s government. The targeting of a university leader with state-grade surveillance tools during an election period raises concerns about academic freedom and the suppression of dissent in Serbia.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/socialists-and-democrats-push-eu-law-deepfake/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Socialists push for EU law on deepfakes&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Technology – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The Socialists and Democrats group in the European Parliament is pushing for an EU-wide law to ban harmful deepfakes and require platforms to prevent their spread. The proposal addresses growing fears over AI-generated disinformation and the erosion of trust in digital media, with cross-border implications for regulation and enforcement.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/nato-steps-up-black-sea-surveillance-as-attacks-on-shipping-escalate/"&gt;NATO steps up Black Sea surveillance as attacks on shipping escalate&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;NATO is deploying additional surveillance and intelligence assets in the Black Sea after attacks on commercial vessels off Bulgaria and Romania, including a US P-8 Poseidon aircraft for intelligence gathering. The escalation in maritime attacks and NATO’s response highlights the strategic importance of the Black Sea for European security and trade routes.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/u-s-envoy-witkoff-to-meet-putin-trump-presses-kyiv-to-settle/"&gt;U.S. envoy Witkoff to meet Putin, Trump presses Kyiv to settle&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;US envoy Steve Witkoff will meet Vladimir Putin after talks with Volodymyr Zelenskyy in Oslo, as Donald Trump urges Ukraine to end the war and withholds military support. The shifting US stance under Trump and the push for direct negotiations reshape the geopolitical calculus for Ukraine and its European allies.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/independent-media-under-hacker-attacks-as-report-exposes-coordinated-effort-favouring-vucic/"&gt;Independent media under hacker attacks as report exposes coordinated effort favouring Vučić&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Independent Serbian media outlets N1 and Nova.rs face coordinated inauthentic network attacks amplifying pro-government messages and discrediting their reporting ahead of the 25 October elections. The systematic digital interference against independent media underscores the threats to press freedom and democratic processes in Serbia.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/eu-recasts-arctic-policy-around-defence-and-critical-infrastructure/"&gt;EU recasts Arctic policy around defence and critical infrastructure&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The European Commission’s new Arctic strategy prioritises defence, critical infrastructure and satellite surveillance in response to Russia’s military buildup and China’s resource ambitions. The policy shift reflects the EU’s growing security concerns in the High North, where climate change and geopolitical competition are reshaping strategic priorities.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 19 October (mistral)</title>
     <id>tag:feedbin-wrap,2026-10-19:afae3550cac5</id>
@@ -743,27 +773,5 @@
 &lt;h3&gt;&lt;a href="https://www.wired.com/story/the-single-english-county-saying-no-to-palantir/"&gt;The Single English County Saying No to Palantir&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;Greater Manchester is resisting pressure to join a large NHS data contract with Palantir, arguing it can run the service itself, as UK campaigners call for the deal to be scrapped. Direct case of public-sector AI/data governance and non-technical adoption, with a local authority pushing back against a major vendor contract on ethical and control grounds.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Tech and Science, 21 August</title>
-    <id>tag:feedbin-wrap,2026-08-21:f42b7ccd17e1</id>
-    <updated>2026-08-21T05:57:49.019184Z</updated>
-    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#f42b7ccd17e1"/>
-    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/events/laying-foundations-making-philanthropy-structural-force-european-research-and-innovation"&gt;Laying the foundations:  Making philanthropy a structural force in European research and innovation&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;A Science Business analysis argues that philanthropy should become a structural pillar of European research funding, noting EU R&amp;amp;D investment stood at just 2.24% of GDP in 2024, far short of the long-standing 3% target. Directly concerns EU research funding policy and the financing gap that Horizon Europe and national programmes are meant to close.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/events/healthy-prospects-how-optimise-societal-value-medical-research"&gt;Healthy prospects: How to optimise the societal value of medical research?&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;A Science Business piece examines how to maximise the societal value of medical research funding in Europe. Touches on research funding and evaluation policy, core to the EU research funding beat.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.wired.com/story/coders-say-they-already-found-workarounds-to-claudes-invisible-watermarks/"&gt;Coders Say They Already Found Workarounds to Claude’s Invisible Watermarks&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Anthropic&amp;#x27;s new invisible watermarking for AI-generated content, introduced to comply with EU rules, was reportedly bypassed within hours of launch by coders sharing workarounds online. Tests the practical enforceability of EU AI transparency rules, a direct governance and regulation story.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.404media.co/subtlefakes-slightly-altered-nonconsensual-ai-images-are-taking-over-x/"&gt;Subtlefakes: Slightly Altered Nonconsensual AI Images Are Taking Over X&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;404 Media&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;404 Media reports on &amp;#x27;subtlefakes&amp;#x27;, slightly altered nonconsensual AI images spreading on X that are realistic enough to fool viewers, unlike earlier obvious deepfakes. A concrete case of AI harm, harassment and digital ethics with implications for platform governance and gender-based abuse online.&lt;/p&gt;</content>
   </entry>
 </feed>
