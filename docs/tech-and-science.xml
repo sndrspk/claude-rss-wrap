@@ -4,8 +4,26 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-10-23T10:22:32.005808Z</updated>
+  <updated>2026-10-24T09:43:07.060242Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 24 October</title>
+    <id>tag:feedbin-wrap,2026-10-24:0948812612b6</id>
+    <updated>2026-10-24T09:43:07.060242Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#0948812612b6"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/european-ceos-warn-against-surrendering-frontier-ai-to-us-and-china/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;European CEOs warn against surrendering frontier AI to US and China&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Technology – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;European tech CEOs including DeepL’s Jarek Kutylowski reject calls to abandon frontier AI model development, arguing the EU must secure the full AI value chain to avoid ceding economic and strategic ground to the US and China. The debate exposes a split in European AI strategy, with industry leaders pushing for sustained investment in homegrown models despite trailing competitors, raising questions about funding and industrial policy.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/key-takeaways-from-belgiums-royal-visit-to-kazakhstan-critical-raw-materials-the-middle-corridor-and-eu-cooperation/"&gt;Key takeaways from Belgium’s royal visit to Kazakhstan: critical raw materials, the Middle Corridor and EU cooperation&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Belgium and Kazakhstan agreed to expand cooperation on critical raw materials, including a joint research and training centre with East Kazakhstan University to develop higher-value production and recycling. The partnership targets EU strategic autonomy in raw materials, linking Belgian expertise with Kazakh resources to strengthen supply chains for advanced technologies.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/the-cyber-flaw-scramble-that-brought-the-ai-threat-to-life/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Inside the cyber flaw scramble that brought the AI threat to life &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Technology – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;A premature disclosure of a critical PHP flaw, discovered using AI tools, forced governments worldwide to issue urgent warnings and take websites offline, highlighting how AI amplifies cybersecurity risks. The incident demonstrates the fragility of global cybersecurity coordination in the AI era and the outsized consequences of process failures for European digital infrastructure.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 23 October</title>
     <id>tag:feedbin-wrap,2026-10-23:0af85db26c6d</id>
@@ -759,35 +777,5 @@
 &lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/08/27/technology/openai-letter-ai-attacks.html"&gt;OpenAI and 100 Others Warn That Window to Defend Against A.I. Attacks Is Narrowing&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;OpenAI, Anthropic, Google and more than 100 others signed an open letter warning that a wave of AI-enabled cyberattacks is coming and that organisations and governments need to prepare now. A rare joint industry statement on AI governance and security readiness, aimed squarely at institutions rather than technical audiences.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Tech and Science, 26 August</title>
-    <id>tag:feedbin-wrap,2026-08-26:dfbf00a2ceec</id>
-    <updated>2026-08-26T05:59:34.996025Z</updated>
-    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#dfbf00a2ceec"/>
-    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/fp10/zaharieva-hopes-horizon-europe-deal-2026"&gt;Zaharieva hopes for a Horizon Europe deal in 2026&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;EU Research Commissioner Ekaterina Zaharieva said she hopes the European Parliament and Council will agree the next Horizon Europe programme by the end of 2026. A delayed political deal would push back the first calls for proposals, planned for early 2028, directly affecting Horizon Europe funding timelines.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/european-institute-innovation-and-technology/commission-opens-public-consultation-future"&gt;Commission opens public consultation on future of the EIT&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;The European Commission has opened a public consultation on a new regulation for the European Institute of Innovation and Technology (EIT) as part of the next EU budget cycle. The consultation will shape how EIT innovation funding and structures work after the current budget period, a direct EU research policy matter.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/horizon-europe/marie-sklodowska-curie-actions-investing-people-ideas-and-partnerships"&gt;Marie Skłodowska-Curie Actions: investing in people, ideas and partnerships&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Science Business profiles the Marie Skłodowska-Curie Actions programme through the story of a MSCA COFUND postdoctoral fellow who moved from Ghana to Brussels via the Vrije Universiteit. MSCA is a core Horizon Europe funding instrument for researcher mobility, directly within the highest-priority funding category.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/open-science/copernicus-contract-shortfall-stirs-exit-debate-uk"&gt;Copernicus contract shortfall stirs exit debate in UK&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;The UK&amp;#x27;s exclusion from the EU&amp;#x27;s Copernicus Earth observation programme since Brexit has sharply cut British firms&amp;#x27; contract wins, prompting calls for the UK to abandon the programme. This is an EU research infrastructure programme with direct policy and funding consequences for a non-EU participant, illustrating the cost of exclusion from EU schemes.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/european-innovation-council/first-project-complete-all-three-eic-stages-moves-market"&gt;First project to complete all three EIC stages moves to the market&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;QubeDot has become the first company to complete all three stages of European Innovation Council support, moving its LED wafer technology from lab to market. It is a concrete test case of how the EIC&amp;#x27;s Horizon Europe funding pipeline, from grant to spin-out to investment, actually works in practice.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.wired.com/story/teachers-deepfake-ai-students-content/"&gt;They Dedicated Their Lives to Teaching. Then the Deepfakes Started&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;WIRED reports that four teachers have become targets of sexualised AI-generated deepfakes made by students, with little accountability available. It shows a concrete labour and safety effect of AI misuse on educators, an area of AI governance and harm largely unaddressed by current rules.&lt;/p&gt;</content>
   </entry>
 </feed>
