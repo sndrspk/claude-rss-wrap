@@ -121,3 +121,19 @@ tags:
       - Skip: celebrity gossip, chart and box-office numbers as such, awards-season
         horse race, quizzes and games, US reality television other than Drag Race
         and the B&B shows and Love Is Blind.
+
+ - name: "Wrap: News"
+    label: "News"
+    slug: "news"
+    max_items: 12
+    mark_read: true
+    language: |
+      Always in Dutch. Clear, informative language.
+    job: |
+      Summarize the most important news items and give a link to the original. The use of this wrap is twofold: read the summaries and be up to date, and provide links to relevant articles to dive deeper. Contrary to the other wraps, I don't want original articles, but rather the most relevant news on a global, European, Belgian and Flemish scale. Pick topics that news outlets would make headlines about. Create a concise overview of the news of the past period.
+    interests: |
+      - I live in Flanders and most sources are Flemish, so highlight the main news in the country.
+      - World politics and geopolitical issues.
+      - EU politics.
+      - Special interests in the Netherlands and Germany.
+      - Special interests in anything that intersects with media or tech trends.
