@@ -508,6 +508,37 @@ def build_atom(config: dict, tag_cfg: dict, published: list[dict]) -> str:
 
 # --------------------------------------------------------------------- main
 
+WEEKDAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+
+
+def plan_tags(tags: list[dict]) -> list[dict]:
+    """Tags due today, honouring each tag's schedule.days (UTC).
+
+    A tag without a schedule runs every time. Days are matched against the
+    UTC weekday, the same clock the workflow's cron line runs on. The
+    ONLY_TAGS environment variable overrides the schedule entirely and runs
+    exactly the named tags; it is set by the workflow's only_tags input.
+    """
+    only = [t.strip() for t in os.environ.get("ONLY_TAGS", "").split(",") if t.strip()]
+    if only:
+        known = {tag["name"] for tag in tags}
+        unknown = [t for t in only if t not in known]
+        if unknown:
+            die(f"ONLY_TAGS names unknown tags: {', '.join(unknown)}")
+        log(f"ONLY_TAGS set: running {', '.join(only)} regardless of schedule")
+        return [tag for tag in tags if tag["name"] in only]
+
+    today = WEEKDAYS[datetime.now(timezone.utc).weekday()]
+    due = []
+    for tag_cfg in tags:
+        days = tag_cfg.get("schedule", {}).get("days")
+        if not days or today in [d.strip().lower() for d in days]:
+            due.append(tag_cfg)
+        else:
+            log(f"{tag_cfg['name']}: not due on {today}, skipping")
+    return due
+
+
 def build_picks(selected: list[dict], entries: list[dict], tag_cfg: dict,
                 titles: dict[int, str]) -> list[dict]:
     picks = []
@@ -640,13 +671,18 @@ def main() -> None:
         api_key = env("MISTRAL_API_KEY" if provider == "mistral"
                       else "ANTHROPIC_API_KEY")
 
+    planned = plan_tags(config["tags"])
+    if not planned:
+        log("no tags due today, nothing to do")
+        return
+
     session = feedbin_session()
     check_auth(session)
     tag_feeds = feed_ids_by_tag(session)
     titles = feed_titles(session)
 
     results = {}
-    for tag_cfg in config["tags"]:
+    for tag_cfg in planned:
         try:
             results[tag_cfg["name"]] = process_tag(
                 session, config, tag_cfg, tag_feeds, titles,
@@ -661,11 +697,22 @@ def main() -> None:
     (DOCS_DIR / "index.html").write_text(build_home(config), encoding="utf-8")
 
     failures = []
+    planned_names = {tag_cfg["name"] for tag_cfg in planned}
     for tag_cfg in config["tags"]:
         result = results.get(tag_cfg["name"])
 
         tag_state = state["tags"].setdefault(tag_cfg["name"], {"published": []})
         tag_state.setdefault("published", [])
+
+        if tag_cfg["name"] not in planned_names:
+            # Not due today: state and mark-read are untouched, but the files
+            # are still rewritten so the feed stays valid and in step with
+            # config changes.
+            (DOCS_DIR / f"{tag_cfg['slug']}.xml").write_text(
+                build_atom(config, tag_cfg, tag_state["published"]), encoding="utf-8")
+            (DOCS_DIR / f"{tag_cfg['slug']}.html").write_text(
+                build_index(config, tag_cfg, tag_state["published"]), encoding="utf-8")
+            continue
 
         if result is None:
             # Errored or no feeds carry the tag. Still write the files, so the

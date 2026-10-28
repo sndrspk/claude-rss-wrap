@@ -58,8 +58,12 @@ See the comments in `config.yml`. Key knobs:
   `mark_read`, `language`, `job` (public writing instructions), and
   `interests` (private selection profile, never shown in output).
 
-The run schedule is the cron line in `.github/workflows/wrap.yml` (GitHub
-only accepts cron there).
+The run schedule lives in `config.yml`: each tag's `schedule.days` lists the
+UTC weekdays it runs on (`mon` … `sun`; omit it to run daily). The workflow in
+`.github/workflows/wrap.yml` sweeps daily and `wrap.py` decides which tags are
+due. To run a single tag by hand, use the `only_tags` input on the workflow's
+manual run (Actions tab), e.g. `Wrap: News` — it bypasses the schedule and
+leaves the other tags' state untouched.
 
 ## Secrets
 
@@ -73,8 +77,11 @@ Actions):
 
 ## Running
 
-The workflow runs on the cron schedule in `.github/workflows/wrap.yml` and
-can also be triggered manually from the Actions tab (`workflow_dispatch`).
+The workflow sweeps daily on the cron schedule in `.github/workflows/wrap.yml`
+and can also be triggered manually from the Actions tab (`workflow_dispatch`).
+Which tags actually run is decided per tag by `wrap.py` from `schedule.days`
+in `config.yml`; the manual run's `only_tags` input overrides that for a
+one-off test of a single tag.
 Locally, with the three environment variables set:
 
 ```
