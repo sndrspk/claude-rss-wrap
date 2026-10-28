@@ -72,7 +72,7 @@ tags:
     mark_read: true
     # UTC weekdays this tag runs on (see header comment). Omit to run daily.
     schedule:
-      days: [mon, wed, fri, sat]
+      days: [mon, wed, fri]
     language: |
       British English throughout, whatever language the source article is in.
       If you summarise a Dutch article, write the summary in English anyway.
@@ -101,7 +101,7 @@ tags:
     max_items: 6
     mark_read: true
     schedule:
-      days: [mon, wed, fri, sat]
+      days: [tue, thu, sat]
     language: |
       Always write the summary in Dutch. If hte source is in a different language, then write "(English article)" at the end of the blurb.
     job: |
