@@ -122,7 +122,7 @@ tags:
         horse race, quizzes and games, US reality television other than Drag Race
         and the B&B shows and Love Is Blind.
 
- - name: "Wrap: News"
+  - name: "Wrap: News"
     label: "News"
     slug: "news"
     max_items: 12
