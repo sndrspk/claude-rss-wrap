@@ -4,8 +4,34 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-11-02T13:43:24.584945Z</updated>
+  <updated>2026-11-04T13:09:10.236188Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 4 November</title>
+    <id>tag:feedbin-wrap,2026-11-04:ed99b1683e06</id>
+    <updated>2026-11-04T13:09:10.236188Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#ed99b1683e06"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/mistral-ceo-mensch-warns-europe-trap-ai-dependence/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Mistral CEO: Europe faces ‘complete trap’ without frontier AI&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Technology – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Mistral CEO Arthur Mensch warns Europe risks a strategic dead end if it relies on foreign frontier AI models instead of building its own computing capacity and advanced systems. The warning frames Europe’s AI sovereignty debate in stark terms, with a leading industry voice arguing that dependence on US and Chinese models leaves the continent vulnerable to export controls and security risks.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/the-eu-handling-fee-of-e2-per-item-on-non-eu-online-sales-has-entered-into-force/"&gt;The EU “handling fee” of €2 per item on non-EU online sales has entered into force&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;From 1 November 2026, every online purchase from outside the EU incurs a non-refundable €2 Union handling fee to fund customs controls on the rising tide of e-commerce parcels. The new fee directly affects consumers and businesses trading across borders, marking a concrete EU policy shift to cover the cost of enforcing safety and compliance on imported goods.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/european-commission-probe-supermarket-cyberattack-christophe-hansen/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;EU Commission to probe supermarket cyberattacks&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Cybersecurity and Data Protection – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The European Commission will assess supermarket cyber resilience after coordinated attacks disabled refrigeration systems in stores across at least six EU countries, causing economic losses and supply disruptions. The probe signals a widening recognition of cyber threats to critical infrastructure, with potential implications for EU-wide security standards and incident response in the food supply chain.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/brussels-sets-slimline-legislative-agenda-for-2027/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Brussels sets slimline legislative agenda for 2027 &lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Technology – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The European Commission’s 2027 work programme scales back new legislation to focus on competitiveness, deregulation and economic security, abandoning stalled proposals and outdated rules. The slimline agenda reflects a strategic pivot in the final stretch of von der Leyen’s mandate, prioritising delivery of existing initiatives over new ambition as geopolitical and economic pressures mount.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://theconversation.com/north-africas-green-hydrogen-exports-to-europe-could-harm-water-supply-and-marine-life-study-294368"&gt;North Africa’s green hydrogen exports to Europe could harm water supply and marine life – study&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;English – The Conversation&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;A study warns that Europe’s push to import green hydrogen from North Africa could deplete scarce water resources and harm marine ecosystems in supplier countries. The findings highlight a tension between Europe’s clean energy goals and the environmental costs borne by producing regions, raising questions about the sustainability of cross-border hydrogen supply chains.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 2 November</title>
     <id>tag:feedbin-wrap,2026-11-02:bac7d3042684</id>
@@ -731,35 +757,5 @@
 &lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/09/05/technology/kenya-college-essays-ai.html"&gt;Kenyans Made a Living Writing College Essays. Then A.I. Arrived.&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;Thousands of Kenyans who earned a living ghostwriting college essays for overseas students have seen that work disappear as AI tools took over the task. A concrete case of AI&amp;#x27;s labour effects on global gig work, illustrating equality and access concerns tied to automation in the Global South.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Tech and Science, 5 September</title>
-    <id>tag:feedbin-wrap,2026-09-05:a8cd4006acef</id>
-    <updated>2026-09-05T09:13:06.379004Z</updated>
-    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#a8cd4006acef"/>
-    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/09/05/technology/kenya-college-essays-ai.html"&gt;Kenyans Made a Living Writing College Essays. Then A.I. Arrived.&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;AI chatbots have wiped out the outsourced essay-writing trade in Kenya, where thousands of workers once earned a living writing college essays for overseas students. It is a concrete, documented case of AI displacing global gig labour, a warning for online work that has served as an economic lifeline elsewhere.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/09/05/books/anthropic-settlement-ai-copyright-books.html"&gt;Authors Wrangle With Publishers Over $1.5 Billion Anthropic A.I. Settlement&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Anthropic must pay $3,000 per pirated book under a $1.5 billion settlement with authors over unauthorised training data, and authors are now disputing with publishers how the payout should be divided. It puts a concrete price on AI training data and shows copyright disputes reshaping the economics of publishing.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/09/04/technology/openai-microsoft-new-york-times-lawsuit.html"&gt;Court Filings In A.I. Suit Invoke Copyright Law, Culture and Sports&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;New filings in the New York Times&amp;#x27;s copyright lawsuit against OpenAI and Microsoft, submitted Friday, argue the case using copyright law, cultural references and sports analogies. The case is the leading test of whether AI firms can train on copyrighted journalism without payment, with direct stakes for the media sector.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/09/04/world/canada/openai-lawsuits-tumbler-ridge-shooting.html"&gt;Tumbler Ridge Shooting Survivors File 30 Lawsuits Against OpenAI&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Survivors of a February shooting in British Columbia have filed 30 lawsuits against OpenAI, arguing it should have alerted police after shutting down the shooter&amp;#x27;s disturbing ChatGPT account eight months earlier. It tests what duty of care AI companies owe when they detect dangerous behaviour on their platforms, a live question for AI governance.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/09/04/technology/open-source-ai-anthropic-openai.html"&gt;Corporate America Is Getting Hooked on Open-Source A.I.&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Large companies such as AT&amp;amp;T are increasingly running cheap, freely available open-source AI models instead of paying for proprietary systems from OpenAI or Anthropic. It marks a shift in how organisations adopt AI, with cost and control outweighing loyalty to flagship commercial models.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.wired.com/story/ai-job-market-infinite-doom-loop/"&gt;AI Use in the Job Market Is Creating an Infinite Doom Loop&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Job seekers are using AI to mass-produce applications while employers use AI to screen them out, creating a self-defeating loop in hiring. It shows how AI adoption on both sides of the labour market is degrading recruitment rather than improving it.&lt;/p&gt;</content>
   </entry>
 </feed>
