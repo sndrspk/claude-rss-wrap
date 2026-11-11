@@ -4,8 +4,38 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-11-09T14:08:47.006369Z</updated>
+  <updated>2026-11-11T12:51:35.873250Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 11 November</title>
+    <id>tag:feedbin-wrap,2026-11-11:c844f618383a</id>
+    <updated>2026-11-11T12:51:35.873250Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#c844f618383a"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/merz-issues-ultimatum-on-eu-budget-ukraine-financing-must-be-guaranteed-by-all-members/"&gt;Merz issues ultimatum on EU budget: Ukraine financing must be guaranteed by all members&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;German Chancellor Friedrich Merz has conditioned Germany’s support for the EU’s 2028–2034 Multiannual Financial Framework on all member states committing to finance Ukraine from 2027 onwards. The demand ties the EU’s long-term budget negotiations to a collective pledge on Ukraine funding, raising the stakes for member states resistant to further contributions.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/eu-trusted-partners-ai-chips-henna-virkkunen-nvidia-crisis/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;EU needs only ‘very trusted partners’ on AI chips, tech chief says amid Nvidia crisis&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Artificial Intelligence – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The European Commission’s tech chief Henna Virkkunen stated the EU should work only with ‘very trusted partners’ on AI microchips, following the Nvidia spy scandal involving its CEO Jensen Huang. The remark signals a potential shift in EU procurement and partnership policies for critical AI technologies amid security concerns.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/eu-watchdog-commission-ai-pick-conflict-of-interest-concerns/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;EU watchdog probes Commission’s AI pick over conflict of interest concerns&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Technology – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;The European Ombudsman has opened an inquiry into the European Commission’s appointment of Siemens chairman Jim Hagemann Snabe as its AI envoy over conflict of interest concerns raised by NGOs. The probe questions whether the Commission properly assessed the independence of a key AI advisor with ongoing corporate ties.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/turkey-hails-four-country-green-energy-pact-as-tanap-for-electricity/"&gt;Turkey hails four-country green energy pact as ‘TANAP for electricity’&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Turkey, Azerbaijan, Georgia and Bulgaria signed a strategic energy partnership at COP31 to develop cross-border electricity transmission for renewable power, likened to the TANAP gas pipeline. The agreement aims to create a new route for clean electricity from the Caspian region to European markets, aligning energy and climate policy.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/merz-holds-firm-after-fico-calls-eu-budget-ukraine-link-classic-blackmail/"&gt;Merz holds firm after Fico calls EU budget–Ukraine link “classic blackmail”&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Slovak Prime Minister Robert Fico accused German Chancellor Friedrich Merz of ‘classic blackmail’ for linking EU budget support to Ukraine financing, while Merz defended the collective duty to fund Kyiv. The public dispute highlights divisions within the EU over the conditionality of budget negotiations and long-term support for Ukraine.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://theconversation.com/the-supermarket-fridge-hack-exposes-the-cracks-in-tech-vision-of-an-internet-of-things-296314"&gt;The supermarket fridge hack exposes the cracks in tech vision of an ‘internet of things’&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;English – The Conversation&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;A cyberattack on supermarket refrigeration systems across Europe, attributed by France to Iran, caused food spoilage and exposed vulnerabilities in the ‘internet of things’ infrastructure. The incident underscores the growing risk of cyber threats to critical physical systems and supply chains, with geopolitical implications.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 9 November</title>
     <id>tag:feedbin-wrap,2026-11-09:8dba7f9bf653</id>
@@ -743,35 +773,5 @@
 &lt;h3&gt;&lt;a href="https://www.wired.com/story/meta-sued-over-training-data-for-its-ai-and-face-recognition-systems/"&gt;Meta Sued Over Training Data for Its AI and Face-Recognition Systems&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;A proposed class action lawsuit alleges Meta illegally used people&amp;#x27;s Facebook and Instagram photos to train its AI image generators and its unreleased NameTag face-recognition feature. Raises concrete questions about consent and data use in AI training, a core governance and regulation issue.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Tech and Science, 11 September</title>
-    <id>tag:feedbin-wrap,2026-09-11:2770ea138ddf</id>
-    <updated>2026-09-11T09:55:31.893321Z</updated>
-    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#2770ea138ddf"/>
-    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/fp10/parliament-haggle-over-eu-wide-spending-rules-delays-vote-horizon-europe"&gt;Parliament haggle over EU-wide spending rules delays vote on Horizon Europe&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;The European Parliament&amp;#x27;s budget committee has paused work on the next Horizon Europe programme and the European Competitiveness Fund while MEPs argue over new EU-wide spending rules known as the Performance Framework. A stalled procedural fight is holding up the legislative timetable for the EU&amp;#x27;s main research funding programme.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/eu-budget/eu-own-resources-essential-future-research-budget-says-leading-mep"&gt;EU own resources ‘essential’ for future research budget, says leading MEP&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;MEP Siegfried Mureșan, Parliament&amp;#x27;s co-rapporteur on the 2028-2034 EU budget, warns that the Parliament&amp;#x27;s proposed €200 billion Horizon Europe programme depends on governments agreeing new EU revenue sources, or the whole research budget could shrink. Directly concerns the size and financing of the next Horizon Europe budget cycle.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/technology-transfer/eu-targets-public-procurement-reform-boost-rd-spending"&gt;EU targets public procurement reform to boost R&amp;amp;D spending&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;The European Commission, via Executive Vice-President Stéphane Séjourné and Research Commissioner Ekaterina Zaharieva, has proposed an EU Innovation Act along with public procurement reforms aimed at boosting R&amp;amp;D spending. A concrete policy shift on how EU procurement rules will be used to steer research and innovation funding.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/keep-battery-research-innovation-under-one-roof"&gt;Keep battery Research &amp;amp; Innovation under one roof&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;The Batteries European Partnership Association has published a Battery Research &amp;amp; Innovation Blueprint and is calling on organisations across the battery sector to endorse keeping battery R&amp;amp;I coordinated under one EU framework. A sector-wide push to shape how EU research funding for batteries is structured going forward.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/viewpoint/data/viewpoint-unlocking-europes-wildfire-data"&gt;Viewpoint: Unlocking Europe’s wildfire data&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Jean-Claude Burgelman, professor emeritus at the Free University of Brussels, argues Europe should better exploit Copernicus satellite data to predict and fight wildfires. A Belgian academic&amp;#x27;s case for unlocking an existing EU research infrastructure programme for a new practical use.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/international-news/how-geopolitical-rifts-cut-scientific-collaboration"&gt;How geopolitical rifts cut scientific collaboration&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;A new study quantifies how worsening geopolitical tensions between governments have measurably reduced scientific collaboration between research labs over the past decade. Concrete evidence on a factor increasingly shaping EU research policy and international funding partnerships.&lt;/p&gt;</content>
   </entry>
 </feed>
