@@ -4,8 +4,34 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-11-11T12:51:35.873250Z</updated>
+  <updated>2026-11-13T13:17:32.772539Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 13 November</title>
+    <id>tag:feedbin-wrap,2026-11-13:6b2416cdebc3</id>
+    <updated>2026-11-13T13:17:32.772539Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#6b2416cdebc3"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/australia-signs-up-to-eus-horizon-europe-research-program/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Australia signs up to EU’s Horizon Europe research program&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Horizon Europe – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Australia has formally joined Horizon Europe’s Pillar II, giving its organisations full access to the €95 billion programme from January 2027. Australian researchers will now compete on equal terms with EU entities for funding in climate, health, computing and energy projects under the EU’s flagship research framework.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/ai-yoshua-bengio-implore-europe-build-frontier-models/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;AI pioneer Yoshua Bengio implores Europe to build frontier models&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Cybersecurity and Data Protection – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;AI pioneer Yoshua Bengio urges Europe to develop its own frontier models to avoid dependence on US or Chinese systems. Bengio warns that relying on foreign models risks long-term economic and military vulnerability, framing the debate over Europe’s AI sovereignty.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/5-things-to-watch-dublin-eu-leaders-summit-european-council/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;5 things to watch at the Dublin EU leaders’ summit&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Artificial Intelligence – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;EU leaders meet in Dublin to debate Europe’s AI strategy, focusing on sovereignty across the value chain from chips to models. The discussion centres on whether Europe should invest in homegrown frontier models or build applications on top of existing foreign systems.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/ban-the-filter-european-cities-unite-against-cigarette-butts/"&gt;Ban the filter: European cities unite against cigarette butts&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Major European cities including Brussels, Munich and Dublin are calling for an EU-wide ban on cigarette filters. The campaign argues that plastic filters offer no health benefit and are the single largest source of urban litter, with current cleanup schemes proving inadequate.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/tinder-owner-hit-with-e11m-privacy-fine/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Tinder owner hit with €11M privacy fine&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Cybersecurity and Data Protection – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Ireland’s Data Protection Commission has fined Match Group €11 million for failing to provide Tinder users with full access to their personal data. The decision highlights gaps in compliance with GDPR’s right-to-access provisions, affecting millions of EU users.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 11 November</title>
     <id>tag:feedbin-wrap,2026-11-11:c844f618383a</id>
@@ -759,19 +785,5 @@
 &lt;h3&gt;&lt;a href="https://sciencebusiness.net/network-updates/tu-eindhoven-picks-krist-vaesen-chair-committee-responsible-collaborations"&gt;TU Eindhoven picks Krist Vaesen to chair committee for responsible collaborations&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;TU Eindhoven&amp;#x27;s Executive Board has appointed associate professor Krist Vaesen to chair a new Committee for Responsible Collaborations, with other members to follow. A governance decision at a major Dutch technical university shaping how it vets research partnerships.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Tech and Science, 12 September</title>
-    <id>tag:feedbin-wrap,2026-09-12:f4a347f64f83</id>
-    <updated>2026-09-12T09:30:42.267772Z</updated>
-    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#f4a347f64f83"/>
-    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href="https://www.wired.com/story/one-of-ais-fiercest-critics-says-all-the-doom-talk-is-meant-to-distract-us/"&gt;One of AI’s Fiercest Critics Says All the Doom Talk Is ‘Meant to Distract Us’&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;AI researcher Timnit Gebru argues that AI companies&amp;#x27; talk of existential &amp;#x27;doom&amp;#x27; is a deliberate distraction from concrete harms already happening, such as autonomous weapons. A direct critique of how the AI industry frames risk, relevant to the ethics and governance side of AI debates.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.wired.com/story/meta-sued-over-training-data-for-its-ai-and-face-recognition-systems/"&gt;Meta Sued Over Training Data for Its AI and Face-Recognition Systems&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;A proposed class action lawsuit alleges Meta illegally used people&amp;#x27;s Facebook and Instagram photos to train its AI image generators and its unreleased NameTag face-recognition feature. Raises concrete questions about consent and data use in AI training, a core governance and regulation issue.&lt;/p&gt;</content>
   </entry>
 </feed>
