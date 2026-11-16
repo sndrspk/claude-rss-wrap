@@ -4,8 +4,38 @@
   <id>https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml</id>
   <link rel="self" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.xml"/>
   <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html"/>
-  <updated>2026-11-13T13:17:32.772539Z</updated>
+  <updated>2026-11-16T13:52:58.335326Z</updated>
   <author><name>Feedbin Wrap</name></author>
+  <entry>
+    <title>Tech and Science, 16 November</title>
+    <id>tag:feedbin-wrap,2026-11-16:0cc509e17331</id>
+    <updated>2026-11-16T13:52:58.335326Z</updated>
+    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#0cc509e17331"/>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/microsoft-outage-renews-european-calls-to-detox-from-us-tech/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Microsoft outage renews European calls to detox from US tech&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Artificial Intelligence – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;EU leaders gathered in Dublin for their first high-level AI summit, where Mistral CEO Arthur Mensch urged Europe to reinvest in its own digital infrastructure to regain control and fund R&amp;amp;D. The summit marks a pivotal moment for EU AI policy, with calls to reduce dependence on US and Chinese tech and boost European sovereignty in AI development.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/eu-leaders-hold-first-high-level-ai-talks-in-dublin/"&gt;EU leaders hold first high-level AI talks in Dublin, agree on European team for Ukraine peace talks&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;EU leaders in Dublin agreed on a joint team of national security officials from Germany, France, the UK, Italy, Poland, the European Commission and Council to represent Europe in future Ukraine peace talks. The decision formalises Europe’s negotiating stance on Ukraine, balancing AI discussions with immediate geopolitical priorities.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/italy-hits-meta-with-e805m-fine-over-privacy-law-violation/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Italy hits Meta with €805M fine over privacy law violation&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Technology – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Italy’s data protection authority fined Meta €805 million for violating the EU’s ePrivacy directive by accessing Android users’ camera rolls without specific consent. The record fine underscores the EU’s strict enforcement of digital privacy laws and sets a precedent for tech giants operating in Europe.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://eualive.net/hundreds-of-thousands-gather-against-changes-to-czech-public-media-funding/"&gt;Hundreds of thousands gather against changes to Czech public media funding&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;EUalive&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Up to 450,000 people protested in Prague against a government bill to shift Czech public media funding from household licence fees to state budget control. The mass demonstration highlights concerns over media independence and democratic backsliding in Central Europe, a key issue for EU cohesion.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/estonias-digital-preppers-have-a-doomsday-backup-plan/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;Estonia has a plan for Russian occupation: Run its government from the cloud&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Cybersecurity and Data Protection – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;Estonia unveiled a doomsday resilience plan to run its government from the cloud if Russia occupies its territory, ensuring continuity of digital services. The strategy reflects Estonia’s proactive approach to hybrid threats and sets a model for digital sovereignty in high-risk EU states.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;&lt;a href="https://www.politico.eu/article/france-pushes-for-rapid-eu-sanctions-on-iran-for-supermarket-hacks/?utm_source=RSS_Feed&amp;amp;utm_medium=RSS&amp;amp;utm_campaign=RSS_Syndication"&gt;France pushes for rapid EU sanctions on Iran for supermarket hacks&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;small&gt;Cybersecurity and Data Protection – POLITICO&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;France is pushing the EU to impose sanctions on Iran by December for cyberattacks on 700 French supermarkets, which disrupted refrigeration systems and caused food spoilage. The move signals a coordinated EU response to state-sponsored cyber threats, with broader implications for digital security policy.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Tech and Science, 13 November</title>
     <id>tag:feedbin-wrap,2026-11-13:6b2416cdebc3</id>
@@ -755,35 +785,5 @@
 &lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/ai/commit-fully-developing-frontier-ai-europe-or-focus-leverage-eu-leaders-told"&gt;Commit fully to developing frontier AI in Europe or focus on leverage, EU leaders told&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;Experts told EU leaders that Europe must either commit vast financial and political capital to building a genuine European frontier AI company, or abandon that ambition and instead focus on securing leverage over access to foreign AI models. It frames a concrete strategic choice facing EU policymakers on AI industrial policy and dependency, not a technical AI story but a governance one.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Tech and Science, 16 September</title>
-    <id>tag:feedbin-wrap,2026-09-16:6cb33f9e3760</id>
-    <updated>2026-09-16T10:10:52.733381Z</updated>
-    <link rel="alternate" href="https://sndrspk.github.io/claude-rss-wrap/tech-and-science.html#6cb33f9e3760"/>
-    <content type="html">&lt;p&gt;&lt;strong&gt;Tech and Science&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/horizon-europe/data-corner-msca-success-rates-hit-all-time-low"&gt;Data Corner: MSCA success rates hit all-time low&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;The success rate for Marie Skłodowska-Curie Actions grants fell below 10% in 2025, the lowest on record according to the Horizon Europe results dashboard. Direct data on EU research funding competitiveness, falling squarely in the highest-priority category of Horizon Europe programme performance.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/horizon-europe/funding-radar-five-horizon-europe-co-funding-opportunities"&gt;Funding Radar: Five Horizon Europe co-funding opportunities&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Five Horizon Europe co-funded partnerships opened new calls this September, covering the blue economy, urban transitions, forestry, biodiversity and water. Concrete, actionable funding opportunities under Horizon Europe with open calls for researchers.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/news/r-d-funding/research-infrastructures/commission-push-simplify-research-funding-hasnt-fixed-its-most"&gt;Commission push to simplify research funding hasn&amp;#x27;t fixed its most burdensome cost&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;Horizon Europe project managers say the European Commission&amp;#x27;s 2026-27 simplification drive has not reduced the administrative burden it promised to cut. A direct assessment of whether an EU funding policy reform is working as intended, affecting every institution running Horizon Europe projects.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.nytimes.com/2026/09/16/business/european-union-social-media-ban.html"&gt;Age Limits for Social Media Outlined by European Union&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;NYT &amp;gt; Technology&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;The European Union has proposed a law that would bar children under 13 from using social media across all 27 member states. A major EU digital policy move with direct consequences for platforms, families and regulators across Europe.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://www.wired.com/story/sexually-explicit-deepfake-sites-target-100-plus-politicians-in-europe/"&gt;Sexually Explicit Deepfake Sites Target 100-Plus Politicians in Europe&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Feed: Artificial Intelligence Latest&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;An analysis of 160 deepfake websites found sexually explicit fake images of more than 100 politicians across 22 European countries, almost all of them women. Concrete evidence of AI-enabled gendered harassment targeting European public figures, a governance and equality issue rather than a technical one.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3&gt;&lt;a href="https://sciencebusiness.net/network-updates/tu-eindhoven-picks-krist-vaesen-chair-committee-responsible-collaborations"&gt;TU Eindhoven picks Krist Vaesen to chair committee for responsible collaborations&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;small&gt;Science Business&lt;/small&gt;&lt;/p&gt;
-&lt;p&gt;TU Eindhoven&amp;#x27;s Executive Board has appointed associate professor Krist Vaesen to chair a new Committee for Responsible Collaborations, with other members to follow. A governance decision at a major Dutch technical university shaping how it vets research partnerships.&lt;/p&gt;</content>
   </entry>
 </feed>
