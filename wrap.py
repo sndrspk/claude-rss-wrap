@@ -353,18 +353,19 @@ Rules:
 - Select at most {tag_cfg['max_items']} items. Fewer is fine and often correct.
 - If nothing clears the bar, return an empty list. Never pad.
 - Judge each item on its own merits, not on how many you have already picked.
-- Never select two items about the same event or story. If several items
-  report the same thing (same URL, near-identical headline, or the same core
-  facts from different outlets), select at most one of them, the strongest
-  source, and name the other outlets in that item's summary if they add
-  anything.
+- Never select two items about the same event, story or artefact (a movie,
+  game, album, event). If several items cover the same one (same URL,
+  near-identical headline, or the same core facts/reviews from different
+  outlets), select at most one of them, the strongest source, and list the
+  other items' indexes in "also" so their links are published with the pick.
+  Omit "also" for items that stand alone.
 - Language: {tag_cfg['language']}
 - Plain, direct sentences. No marketing register, no "delve", no rhetorical \
 questions, no em dashes.
 - Reply with JSON only. No preamble, no markdown fences.
 
-Reply with exactly this shape:
-{{"selected": [{{"index": <int>, "summary": "<one sentence>", "why": "<one sentence>"}}]}}"""
+Reply with exactly this shape ("also" is optional):
+{{"selected": [{{"index": <int>, "summary": "<one sentence>", "why": "<one sentence>", "also": [<int>, ...]}}]}}"""
 
     lines = []
     for index, entry in enumerate(entries):
@@ -518,10 +519,19 @@ def render_entry_html(label: str, picks: list[dict]) -> str:
         summary = html.escape(pick.get("summary", ""))
         why = html.escape(pick.get("why", ""))
         blurb = " ".join(part for part in (summary, why) if part)
+        also_html = ""
+        also = pick.get("also") or []
+        if also:
+            links = ", ".join(
+                f'<a href="{html.escape(a.get("url") or "")}">'
+                f'{html.escape(a.get("source") or a.get("url") or "")}</a>'
+                for a in also
+            )
+            also_html = f'\n<p><small>{links}</small></p>'
         parts.append(
             f'<h3><a href="{url}">{title}</a></h3>\n'
             f'<p><small>{source}</small></p>\n'
-            f'<p>{blurb}</p>'
+            f'<p>{blurb}</p>{also_html}'
         )
     return f"<p><strong>{html.escape(label)}</strong></p>\n" + "\n<hr>\n".join(parts)
 
@@ -669,11 +679,31 @@ def build_picks(selected: list[dict], entries: list[dict], tag_cfg: dict,
             seen_urls.add(url_key)
         if title_key:
             seen_titles.add(title_key)
+        also = []
+        for other_index in (choice.get("also") or [])[:5]:
+            try:
+                other = entries[int(other_index)]
+            except (ValueError, IndexError, TypeError):
+                continue
+            other_url = normalize_url(other.get("url"))
+            other_title = normalize_title(other.get("title"))
+            if (other_url and other_url in seen_urls) or \
+                    (other_title and other_title in seen_titles):
+                continue
+            if other_url:
+                seen_urls.add(other_url)
+            if other_title:
+                seen_titles.add(other_title)
+            also.append({
+                "url": other.get("url") or "",
+                "source": titles.get(other.get("feed_id"), ""),
+            })
         picks.append({
             "entry": entry,
             "source": titles.get(entry.get("feed_id"), ""),
             "summary": choice.get("summary", ""),
             "why": choice.get("why", ""),
+            "also": also,
         })
     return picks
 
