@@ -11,9 +11,14 @@ serves it via GitHub Pages.
    via the Taggings API. Adding or dropping a feed requires no code change:
    tag it in Feedbin and the next run picks it up.
 2. Fetches entries created after each tag's last `since` timestamp
-   (per-feed, capped by `max_entries_per_tag`).
+   (per-feed, capped by `max_entries_per_tag`), then collapses duplicates in
+   the batch: same normalized URL, same normalized title, or title+text
+   similarity at or above `dedupe_text_similarity`. This catches the same
+   article showing up in several feeds of one publisher.
 3. Sends the batch to the configured AI model with the tag's prompt
-   (a private interests profile and a public writing job). The model replies
+   (a private interests profile and a public writing job). The prompt forbids
+   selecting two items about the same event, and the picks are checked again
+   on output, so one event appears at most once per wrap. The model replies
    with strict JSON: which items to include, a summary, and the hook.
 4. Writes an Atom feed and an archive page per tag into `docs/`, commits
    them, and marks the considered entries read in Feedbin.
@@ -49,6 +54,9 @@ See the comments in `config.yml`. Key knobs:
 - `model` — AI model ID used for the triage step, for the chosen provider.
 - `max_entries_per_tag` — hard ceiling on entries sent per tag per run.
 - `snippet_chars` — characters of article text sent per entry.
+- `dedupe_text_similarity` — title+text similarity at which two items in a
+  batch count as the same story and one is dropped before triage (URL and
+  exact-title duplicates are always dropped). `0` disables the content check.
 - `max_tokens` — output budget per triage call. Raise it if logs show
   the model running out of room mid-JSON.
 - `extract_full_content` — fetch Feedbin's full-text extraction instead of
