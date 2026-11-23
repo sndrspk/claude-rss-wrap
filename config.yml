@@ -56,6 +56,18 @@ max_entries_per_tag: 120
 # Characters of article text sent per entry.
 snippet_chars: 1200
 
+# Duplicate detection before triage. Items in one batch that share a
+# normalized URL or title are always collapsed to one. On top of that, items
+# in the window sent to the model whose title+text word-shingle similarity
+# reaches this Jaccard threshold are treated as the same story and dropped,
+# which catches the same article syndicated across several feeds of one
+# publisher with a tweaked URL or headline. Set to 0 to keep only the
+# URL/title checks. The prompt also tells the model never to select two items
+# about the same event or artefact; the other outlets' links can be attached
+# to the single pick via "also" and are rendered under its blurb. The picks
+# are checked again on output.
+dedupe_text_similarity: 0.5
+
 # Output budget for each triage call. Too low and the model runs out of room
 # mid-JSON and returns nothing usable. Raise it if the log shows
 # stop_reason=max_tokens.

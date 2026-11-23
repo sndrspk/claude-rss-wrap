@@ -27,10 +27,12 @@ import hashlib
 import html
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from xml.sax.saxutils import escape as xml_escape
 
 import requests
@@ -201,6 +203,107 @@ def mark_read(session: requests.Session, entry_ids: list[int]) -> None:
     log(f"  marked {len(entry_ids)} entries read")
 
 
+# ------------------------------------------------------------------- dedupe
+
+TRACKING_PARAMS = {"fbclid", "gclid", "mc_cid", "mc_eid"}
+
+
+def normalize_url(url: str | None) -> str:
+    """Canonical form for duplicate detection: lowercase scheme/host, tracking
+    query params removed, remaining params sorted, fragment and trailing slash
+    dropped. Empty string when there is no usable URL."""
+    url = (url or "").strip()
+    if not url:
+        return ""
+    parts = urlsplit(url)
+    host = (parts.hostname or "").lower()
+    path = parts.path or "/"
+    if path != "/":
+        path = path.rstrip("/")
+    query = sorted(
+        ((key, value)
+         for key, value in parse_qsl(parts.query, keep_blank_values=True)
+         if not key.lower().startswith("utm_") and key.lower() not in TRACKING_PARAMS),
+        key=lambda pair: (pair[0].lower(), pair[0]),
+    )
+    return urlunsplit((parts.scheme.lower() or "http", host, path,
+                       urlencode(query), ""))
+
+
+def normalize_title(title: str | None) -> str:
+    return " ".join(re.findall(r"\w+", (title or "").lower()))
+
+
+def word_shingles(text: str, size: int = 5) -> set[str]:
+    words = re.findall(r"\w+", text.lower())
+    if len(words) < size:
+        return {" ".join(words)} if words else set()
+    return {" ".join(words[i:i + size]) for i in range(len(words) - size + 1)}
+
+
+def jaccard(a: set[str], b: set[str]) -> float:
+    if not a or not b:
+        return 0.0
+    return len(a & b) / len(a | b)
+
+
+def entry_text(entry: dict) -> str:
+    return strip_html(entry.get("_text") or entry.get("content")
+                      or entry.get("summary"))
+
+
+def dedupe_entries(entries: list[dict], text_similarity: float,
+                   window: int) -> list[dict]:
+    """Collapse items that are the same story, so the model never sees, and
+    never picks, the same article twice.
+
+    Exact pass over the whole batch: same normalized URL or same normalized
+    title. Content pass over the tail window the model will actually see
+    (bounded by max_entries_per_tag): word-shingle Jaccard of title+text at or
+    above `text_similarity` counts as the same story, catching syndicated
+    copies with a tweaked URL or headline. The first (oldest) copy wins.
+    """
+    seen_urls: set[str] = set()
+    seen_titles: set[str] = set()
+    kept: list[dict] = []
+    dropped = 0
+    for entry in entries:
+        url_key = normalize_url(entry.get("url"))
+        title_key = normalize_title(entry.get("title"))
+        if (url_key and url_key in seen_urls) or (title_key and title_key in seen_titles):
+            dropped += 1
+            continue
+        if url_key:
+            seen_urls.add(url_key)
+        if title_key:
+            seen_titles.add(title_key)
+        kept.append(entry)
+
+    if text_similarity > 0 and len(kept) > 1:
+        if window and window < len(kept):
+            head, tail = kept[:-window], kept[-window:]
+        else:
+            head, tail = [], kept
+        shingles = [word_shingles(f"{e.get('title') or ''} {entry_text(e)}"[:4000])
+                    for e in tail]
+        remove = set()
+        for i in range(len(tail)):
+            if i in remove:
+                continue
+            for j in range(i + 1, len(tail)):
+                if j not in remove and jaccard(shingles[i], shingles[j]) >= text_similarity:
+                    remove.add(j)
+        if remove:
+            dropped += len(remove)
+            tail = [e for i, e in enumerate(tail) if i not in remove]
+        kept = head + tail
+
+    if dropped:
+        log(f"  dedup: dropped {dropped} duplicate item(s), "
+            f"{len(kept)} of {len(entries)} remain")
+    return kept
+
+
 # ---------------------------------------------------------------- provider
 
 def strip_html(raw: str | None) -> str:
@@ -250,13 +353,19 @@ Rules:
 - Select at most {tag_cfg['max_items']} items. Fewer is fine and often correct.
 - If nothing clears the bar, return an empty list. Never pad.
 - Judge each item on its own merits, not on how many you have already picked.
+- Never select two items about the same event, story or artefact (a movie,
+  game, album, event). If several items cover the same one (same URL,
+  near-identical headline, or the same core facts/reviews from different
+  outlets), select at most one of them, the strongest source, and list the
+  other items' indexes in "also" so their links are published with the pick.
+  Omit "also" for items that stand alone.
 - Language: {tag_cfg['language']}
 - Plain, direct sentences. No marketing register, no "delve", no rhetorical \
 questions, no em dashes.
 - Reply with JSON only. No preamble, no markdown fences.
 
-Reply with exactly this shape:
-{{"selected": [{{"index": <int>, "summary": "<one sentence>", "why": "<one sentence>"}}]}}"""
+Reply with exactly this shape ("also" is optional):
+{{"selected": [{{"index": <int>, "summary": "<one sentence>", "why": "<one sentence>", "also": [<int>, ...]}}]}}"""
 
     lines = []
     for index, entry in enumerate(entries):
@@ -265,6 +374,7 @@ Reply with exactly this shape:
         lines.append(
             f"[{index}] source: {source}\n"
             f"title: {entry.get('title') or '(untitled)'}\n"
+            f"url: {entry.get('url') or ''}\n"
             f"author: {entry.get('author') or 'unknown'}\n"
             f"published: {entry.get('published', '')[:10]}\n"
             f"text: {body[:snippet_chars]}\n"
@@ -409,10 +519,19 @@ def render_entry_html(label: str, picks: list[dict]) -> str:
         summary = html.escape(pick.get("summary", ""))
         why = html.escape(pick.get("why", ""))
         blurb = " ".join(part for part in (summary, why) if part)
+        also_html = ""
+        also = pick.get("also") or []
+        if also:
+            links = ", ".join(
+                f'<a href="{html.escape(a.get("url") or "")}">'
+                f'{html.escape(a.get("source") or a.get("url") or "")}</a>'
+                for a in also
+            )
+            also_html = f'\n<p><small>{links}</small></p>'
         parts.append(
             f'<h3><a href="{url}">{title}</a></h3>\n'
             f'<p><small>{source}</small></p>\n'
-            f'<p>{blurb}</p>'
+            f'<p>{blurb}</p>{also_html}'
         )
     return f"<p><strong>{html.escape(label)}</strong></p>\n" + "\n<hr>\n".join(parts)
 
@@ -542,16 +661,49 @@ def plan_tags(tags: list[dict]) -> list[dict]:
 def build_picks(selected: list[dict], entries: list[dict], tag_cfg: dict,
                 titles: dict[int, str]) -> list[dict]:
     picks = []
+    seen_urls: set[str] = set()
+    seen_titles: set[str] = set()
     for choice in selected[:tag_cfg["max_items"]]:
         try:
             entry = entries[int(choice["index"])]
         except (KeyError, ValueError, IndexError):
             continue
+        url_key = normalize_url(entry.get("url"))
+        title_key = normalize_title(entry.get("title"))
+        if (url_key and url_key in seen_urls) or (title_key and title_key in seen_titles):
+            # Final guard: the prompt forbids picking the same event twice,
+            # but do not trust the model blindly.
+            log(f"  dropping duplicate pick: {entry.get('title')}")
+            continue
+        if url_key:
+            seen_urls.add(url_key)
+        if title_key:
+            seen_titles.add(title_key)
+        also = []
+        for other_index in (choice.get("also") or [])[:5]:
+            try:
+                other = entries[int(other_index)]
+            except (ValueError, IndexError, TypeError):
+                continue
+            other_url = normalize_url(other.get("url"))
+            other_title = normalize_title(other.get("title"))
+            if (other_url and other_url in seen_urls) or \
+                    (other_title and other_title in seen_titles):
+                continue
+            if other_url:
+                seen_urls.add(other_url)
+            if other_title:
+                seen_titles.add(other_title)
+            also.append({
+                "url": other.get("url") or "",
+                "source": titles.get(other.get("feed_id"), ""),
+            })
         picks.append({
             "entry": entry,
             "source": titles.get(entry.get("feed_id"), ""),
             "summary": choice.get("summary", ""),
             "why": choice.get("why", ""),
+            "also": also,
         })
     return picks
 
@@ -603,6 +755,8 @@ def process_tag(session, config, tag_cfg, tag_feeds, titles, api_key, state):
     next_since = entries[-1].get("created_at") or since
 
     considered_ids = [e["id"] for e in entries]
+    entries = dedupe_entries(entries, config.get("dedupe_text_similarity", 0.5),
+                            config["max_entries_per_tag"])
     entries = entries[-config["max_entries_per_tag"]:]
 
     if config.get("extract_full_content"):
