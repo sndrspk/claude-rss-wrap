@@ -28,7 +28,11 @@ serves it via GitHub Pages.
    names under the blurb. The model replies with strict JSON: which items to
    include, a summary, and the hook.
 4. Writes an Atom feed and an archive page per tag into `docs/`, commits
-   them, and marks the considered entries read in Feedbin.
+   them, and marks the considered entries read in Feedbin. Each item in a
+   wrap renders as a plain (unlinked) title, the summary paragraph, and the
+   source name at the bottom as the link, in small caps where the reader
+   supports it; an item merged from several outlets lists all their source
+   links on that bottom line.
 
 Order of operations matters. The state file is only advanced and entries are
 only marked read *after* the Atom file has been written successfully. If the
