@@ -1,10 +1,12 @@
 # Feedbin Wrap — configuration
 #
 # Everything you are likely to want to change lives in this file, including
-# the run schedule: each tag's `schedule.days` lists the UTC weekdays it
-# runs on. The workflow sweeps daily (see .github/workflows/wrap.yml) and
-# wrap.py decides which tags are due. Days are mon, tue, wed, thu, fri,
-# sat, sun. A tag without a schedule runs every day. To run one tag by hand,
+# the run schedule: each tag's `schedule.days` lists the UTC weekdays it runs
+# on (mon, tue, wed, thu, fri, sat, sun; omit it to run daily), and
+# `schedule.time` optionally sets the UTC time of day, e.g. time: "18:00".
+# The workflow sweeps every 30 minutes (see .github/workflows/wrap.yml) and
+# wrap.py runs a tag at the first sweep at or after its time, at most once
+# per day. Default time when omitted: "05:30" UTC. To run one tag by hand,
 # use the workflow's `only_tags` input (Actions tab), which bypasses the
 # schedule entirely.
 
@@ -87,6 +89,7 @@ tags:
     # UTC weekdays this tag runs on (see header comment). Omit to run daily.
     schedule:
       days: [mon, wed, fri]
+      # time: "18:00"  # optional UTC time of day; default "05:30"
     language: |
       British English throughout, whatever language the source article is in.
       If you summarise a Dutch article, write the summary in English anyway.

@@ -635,14 +635,21 @@ def build_atom(config: dict, tag_cfg: dict, published: list[dict]) -> str:
 
 WEEKDAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
 
+# Default schedule.time (UTC) when a tag does not set one: the time the
+# workflow cron used to run at when it swept only once a day.
+DEFAULT_SCHEDULE_TIME = "05:30"
 
-def plan_tags(tags: list[dict]) -> list[dict]:
-    """Tags due today, honouring each tag's schedule.days (UTC).
 
-    A tag without a schedule runs every time. Days are matched against the
-    UTC weekday, the same clock the workflow's cron line runs on. The
-    ONLY_TAGS environment variable overrides the schedule entirely and runs
-    exactly the named tags; it is set by the workflow's only_tags input.
+def plan_tags(tags: list[dict], state: dict,
+              now: datetime | None = None) -> list[dict]:
+    """Tags due now, honouring each tag's schedule.days and schedule.time.
+
+    Days are matched against the UTC weekday and the optional time (UTC
+    "HH:MM", default DEFAULT_SCHEDULE_TIME) against the current UTC time: a
+    tag runs at the first sweep at or after its time, and at most once per
+    day, using the per-tag last_run recorded in state. The ONLY_TAGS
+    environment variable overrides the schedule entirely and runs exactly
+    the named tags; it is set by the workflow's only_tags input.
     """
     only = [t.strip() for t in os.environ.get("ONLY_TAGS", "").split(",") if t.strip()]
     if only:
@@ -653,14 +660,31 @@ def plan_tags(tags: list[dict]) -> list[dict]:
         log(f"ONLY_TAGS set: running {', '.join(only)} regardless of schedule")
         return [tag for tag in tags if tag["name"] in only]
 
-    today = WEEKDAYS[datetime.now(timezone.utc).weekday()]
+    now = now or datetime.now(timezone.utc)
+    today = WEEKDAYS[now.weekday()]
+    today_str = now.strftime("%Y-%m-%d")
     due = []
     for tag_cfg in tags:
-        days = tag_cfg.get("schedule", {}).get("days")
-        if not days or today in [d.strip().lower() for d in days]:
-            due.append(tag_cfg)
-        else:
-            log(f"{tag_cfg['name']}: not due on {today}, skipping")
+        name = tag_cfg["name"]
+        schedule = tag_cfg.get("schedule", {})
+        days = schedule.get("days")
+        if days and today not in [d.strip().lower() for d in days]:
+            log(f"{name}: not due on {today}, skipping")
+            continue
+        time_str = str(schedule.get("time") or DEFAULT_SCHEDULE_TIME).strip()
+        try:
+            hour, minute = (int(part) for part in time_str.split(":"))
+            scheduled = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+        except ValueError:
+            die(f"{name}: invalid schedule.time {time_str!r}, expected \"HH:MM\"")
+        if now < scheduled:
+            log(f"{name}: not due before {time_str} UTC, skipping")
+            continue
+        last_run = state.get("tags", {}).get(name, {}).get("last_run", "")
+        if last_run[:10] == today_str:
+            log(f"{name}: already ran today, skipping")
+            continue
+        due.append(tag_cfg)
     return due
 
 
@@ -831,7 +855,7 @@ def main() -> None:
         api_key = env("MISTRAL_API_KEY" if provider == "mistral"
                       else "ANTHROPIC_API_KEY")
 
-    planned = plan_tags(config["tags"])
+    planned = plan_tags(config["tags"], state)
     if not planned:
         log("no tags due today, nothing to do")
         return
@@ -899,6 +923,7 @@ def main() -> None:
 
         # Only now, after a successful write, advance state and mark read.
         tag_state["since"] = result["next_since"]
+        tag_state["last_run"] = now_iso()
         if tag_cfg.get("mark_read") and result["considered"]:
             mark_read(session, result["considered"])
 
