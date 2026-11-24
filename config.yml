@@ -89,7 +89,7 @@ tags:
     # UTC weekdays this tag runs on (see header comment). Omit to run daily.
     schedule:
       days: [mon, wed, fri]
-      # time: "18:00"  # optional UTC time of day; default "05:30"
+      time: "12:00"  # optional UTC time of day; default "05:30"
     language: |
       British English throughout, whatever language the source article is in.
       If you summarise a Dutch article, write the summary in English anyway.
@@ -119,6 +119,7 @@ tags:
     mark_read: true
     schedule:
       days: [tue, thu, sat]
+      time: "16:00"
     language: |
       Always write the summary in Dutch. If hte source is in a different language, then write "(English article)" at the end of the blurb.
     job: |
@@ -155,6 +156,7 @@ tags:
     mark_read: true
     schedule:
       days: [mon, tue, wed, thu, fri, sat, sun]
+      time: "10:00" 
     language: |
       Always in Dutch. Clear, informative language.
     job: |
