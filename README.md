@@ -17,12 +17,16 @@ serves it via GitHub Pages.
    article showing up in several feeds of one publisher.
 3. Sends the batch to the configured AI model with the tag's prompt
    (a private interests profile and a public writing job). The prompt forbids
-   selecting two items about the same event or artefact, and the picks are
-   checked again on output, so one event appears at most once per wrap. When
-   several outlets cover the same event (e.g. reviews of one film, game or
-   album), the single pick lists their indexes in `also` and their links are
-   rendered as linked source names under the blurb. The model replies with
-   strict JSON: which items to include, a summary, and the hook.
+   selecting two items about the same event or artefact: two items count as
+   the same event when they report the same underlying proposal, decision or
+   announcement by the same person or institution in the same timeframe, even
+   when the URL, headline, figures or angle differ between outlets (when in
+   doubt, treat them as the same). The picks are checked again on output, so
+   one event appears at most once per wrap. When several outlets cover the
+   same event (e.g. reviews of one film, game or album), the single pick lists
+   their indexes in `also` and their links are rendered as linked source
+   names under the blurb. The model replies with strict JSON: which items to
+   include, a summary, and the hook.
 4. Writes an Atom feed and an archive page per tag into `docs/`, commits
    them, and marks the considered entries read in Feedbin.
 
