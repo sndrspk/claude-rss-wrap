@@ -511,29 +511,33 @@ def call_provider(provider: str, model: str, system: str, user: str,
 
 # --------------------------------------------------------------------- atom
 
+def source_link(url: str | None, name: str | None) -> str:
+    url = (url or "").strip()
+    text = html.escape(name or url or "")
+    if not url:
+        return text
+    return f'<a href="{html.escape(url)}">{text}</a>'
+
+
 def render_entry_html(label: str, picks: list[dict]) -> str:
+    """One pick as HTML: plain (unlinked) title, the blurb paragraph, then the
+    source name(s) at the bottom as the link, small caps where supported.
+    Merged picks list every outlet's link on that bottom line."""
     parts = []
     for pick in picks:
         entry = pick["entry"]
         title = html.escape(entry.get("title") or "(untitled)")
-        url = html.escape(entry.get("url") or "")
-        source = html.escape(pick.get("source", ""))
         summary = html.escape(pick.get("summary", ""))
         why = html.escape(pick.get("why", ""))
         blurb = " ".join(part for part in (summary, why) if part)
-        also_html = ""
-        also = pick.get("also") or []
-        if also:
-            links = ", ".join(
-                f'<a href="{html.escape(a.get("url") or "")}">'
-                f'{html.escape(a.get("source") or a.get("url") or "")}</a>'
-                for a in also
-            )
-            also_html = f'\n<p><small>{links}</small></p>'
+        links = [source_link(entry.get("url"), pick.get("source"))]
+        for a in pick.get("also") or []:
+            links.append(source_link(a.get("url"), a.get("source")))
+        sources = " ".join(links)
         parts.append(
-            f'<h3><a href="{url}">{title}</a></h3>\n'
-            f'<p><small>{source}</small></p>\n'
-            f'<p>{blurb}</p>{also_html}'
+            f"<h3>{title}</h3>\n"
+            f"<p>{blurb}</p>\n"
+            f'<p><small style="font-variant: small-caps">{sources}</small></p>'
         )
     return f"<p><strong>{html.escape(label)}</strong></p>\n" + "\n<hr>\n".join(parts)
 
@@ -544,7 +548,7 @@ PAGE_CSS = """
   article { margin-bottom: 4rem; }
   h2 { font-size: 1.3rem; border-bottom: 1px solid #ddd; padding-bottom: .4rem; }
   h3 { font-size: 1rem; margin-bottom: .2rem; }
-  small { color: #777; }
+  small { color: #777; font-variant: small-caps; }
   em { color: #555; }
   hr { border: 0; border-top: 1px solid #eee; margin: 1.5rem 0; }
   a { color: #0a5; }
