@@ -2,11 +2,13 @@ name: Wrap
 
 on:
   schedule:
-    # GitHub cron is always UTC. Belgium is UTC+2 in summer, UTC+1 in winter,
-    # so 05:30 UTC lands at 07:30 local now and 06:30 local in January.
-    # The sweep runs daily; which wraps actually run is decided per tag by
-    # wrap.py from each tag's schedule.days in config.yml.
-    - cron: "30 5 * * *"
+    # GitHub cron is always UTC. The sweep runs every 30 minutes; which wraps
+    # actually run is decided per tag by wrap.py from each tag's schedule.days
+    # and optional schedule.time in config.yml (default 05:30 UTC, the time
+    # this cron used to fire at when it swept only once a day). A tag runs at
+    # the first sweep at or after its time, at most once per day. Sweeps with
+    # nothing due exit before touching Feedbin, so they are cheap.
+    - cron: "*/30 * * * *"
   workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
     inputs:
       only_tags:

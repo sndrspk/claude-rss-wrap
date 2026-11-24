@@ -78,11 +78,14 @@ See the comments in `config.yml`. Key knobs:
   `interests` (private selection profile, never shown in output).
 
 The run schedule lives in `config.yml`: each tag's `schedule.days` lists the
-UTC weekdays it runs on (`mon` … `sun`; omit it to run daily). The workflow in
-`.github/workflows/wrap.yml` sweeps daily and `wrap.py` decides which tags are
-due. To run a single tag by hand, use the `only_tags` input on the workflow's
-manual run (Actions tab), e.g. `Wrap: News` — it bypasses the schedule and
-leaves the other tags' state untouched.
+UTC weekdays it runs on (`mon` … `sun`; omit it to run daily), and the
+optional `schedule.time: "HH:MM"` sets the UTC time of day (default `05:30`).
+The workflow in `.github/workflows/wrap.yml` sweeps every 30 minutes and
+`wrap.py` runs a tag at the first sweep at or after its time, at most once
+per tag per day (tracked via `last_run` in `state.json`). To run a single tag
+by hand, use the `only_tags` input on the workflow's manual run (Actions
+tab), e.g. `Wrap: News` — it bypasses the schedule and leaves the other tags'
+state untouched.
 
 ## Secrets
 
