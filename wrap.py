@@ -350,15 +350,17 @@ person. This matters:
   involved, what is unusual about it.
 
 Rules:
+- Never select two items about the same event, story or artefact. Two items
+  are the same event when they report the same underlying proposal,
+  decision, announcement, release or occurrence by the same person or
+  institution in the same timeframe, even when the URL, headline, figures or
+  angle differ between outlets. When in doubt, treat them as the same event:
+  select at most one of them, the strongest source, and list the other
+  items' indexes in "also" so their links are published with the pick.
+  Omit "also" for items that stand alone.
 - Select at most {tag_cfg['max_items']} items. Fewer is fine and often correct.
 - If nothing clears the bar, return an empty list. Never pad.
 - Judge each item on its own merits, not on how many you have already picked.
-- Never select two items about the same event, story or artefact (a movie,
-  game, album, event). If several items cover the same one (same URL,
-  near-identical headline, or the same core facts/reviews from different
-  outlets), select at most one of them, the strongest source, and list the
-  other items' indexes in "also" so their links are published with the pick.
-  Omit "also" for items that stand alone.
 - Language: {tag_cfg['language']}
 - Plain, direct sentences. No marketing register, no "delve", no rhetorical \
 questions, no em dashes.
